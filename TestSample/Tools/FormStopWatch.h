@@ -37,7 +37,8 @@ namespace TestSample {
 		}
 	private: System::Windows::Forms::SplitContainer^ BaseSplitContainer;
 	private: System::Windows::Forms::SplitContainer^ ControlSplitContainer;
-	private: System::Windows::Forms::DataGridView^ dataGridView1;
+	private: System::Windows::Forms::DataGridView^ dataGridView;
+
 	private: System::Windows::Forms::DataGridViewTextBoxColumn^ TimeCol;
 	private: System::Windows::Forms::PictureBox^ PicBox;
 	private: System::Windows::Forms::Button^ BtnSave;
@@ -46,7 +47,8 @@ namespace TestSample {
 	private: System::Windows::Forms::Button^ BtnStart;
 
 	private: System::Windows::Forms::Button^ BtnRapTime;
-	private: System::ComponentModel::BackgroundWorker^ BackgroundTicer;
+	private: System::Windows::Forms::Timer^ timer_;
+
 	private: System::ComponentModel::IContainer^ components;
 	protected:
 
@@ -66,6 +68,7 @@ namespace TestSample {
 		/// </summary>
 		void InitializeComponent(void)
 		{
+			this->components = (gcnew System::ComponentModel::Container());
 			System::Windows::Forms::DataGridViewCellStyle^ dataGridViewCellStyle1 = (gcnew System::Windows::Forms::DataGridViewCellStyle());
 			System::Windows::Forms::DataGridViewCellStyle^ dataGridViewCellStyle3 = (gcnew System::Windows::Forms::DataGridViewCellStyle());
 			System::Windows::Forms::DataGridViewCellStyle^ dataGridViewCellStyle2 = (gcnew System::Windows::Forms::DataGridViewCellStyle());
@@ -77,9 +80,9 @@ namespace TestSample {
 			this->BtnReset = (gcnew System::Windows::Forms::Button());
 			this->BtnStop = (gcnew System::Windows::Forms::Button());
 			this->BtnStart = (gcnew System::Windows::Forms::Button());
-			this->dataGridView1 = (gcnew System::Windows::Forms::DataGridView());
+			this->dataGridView = (gcnew System::Windows::Forms::DataGridView());
 			this->TimeCol = (gcnew System::Windows::Forms::DataGridViewTextBoxColumn());
-			this->BackgroundTicer = (gcnew System::ComponentModel::BackgroundWorker());
+			this->timer_ = (gcnew System::Windows::Forms::Timer(this->components));
 			(cli::safe_cast<System::ComponentModel::ISupportInitialize^>(this->BaseSplitContainer))->BeginInit();
 			this->BaseSplitContainer->Panel1->SuspendLayout();
 			this->BaseSplitContainer->Panel2->SuspendLayout();
@@ -89,7 +92,7 @@ namespace TestSample {
 			this->ControlSplitContainer->Panel1->SuspendLayout();
 			this->ControlSplitContainer->Panel2->SuspendLayout();
 			this->ControlSplitContainer->SuspendLayout();
-			(cli::safe_cast<System::ComponentModel::ISupportInitialize^>(this->dataGridView1))->BeginInit();
+			(cli::safe_cast<System::ComponentModel::ISupportInitialize^>(this->dataGridView))->BeginInit();
 			this->SuspendLayout();
 			// 
 			// BaseSplitContainer
@@ -135,7 +138,7 @@ namespace TestSample {
 			// 
 			// ControlSplitContainer.Panel2
 			// 
-			this->ControlSplitContainer->Panel2->Controls->Add(this->dataGridView1);
+			this->ControlSplitContainer->Panel2->Controls->Add(this->dataGridView);
 			this->ControlSplitContainer->Size = System::Drawing::Size(452, 169);
 			this->ControlSplitContainer->SplitterDistance = 299;
 			this->ControlSplitContainer->TabIndex = 0;
@@ -190,9 +193,9 @@ namespace TestSample {
 			this->BtnStart->UseVisualStyleBackColor = true;
 			this->BtnStart->Click += gcnew System::EventHandler(this, &FormStopWatch::BtnStart_Click);
 			// 
-			// dataGridView1
+			// dataGridView
 			// 
-			this->dataGridView1->AllowUserToAddRows = false;
+			this->dataGridView->AllowUserToAddRows = false;
 			dataGridViewCellStyle1->Alignment = System::Windows::Forms::DataGridViewContentAlignment::MiddleCenter;
 			dataGridViewCellStyle1->BackColor = System::Drawing::SystemColors::Control;
 			dataGridViewCellStyle1->Font = (gcnew System::Drawing::Font(L"MS UI Gothic", 9, System::Drawing::FontStyle::Regular, System::Drawing::GraphicsUnit::Point,
@@ -201,9 +204,9 @@ namespace TestSample {
 			dataGridViewCellStyle1->SelectionBackColor = System::Drawing::SystemColors::Highlight;
 			dataGridViewCellStyle1->SelectionForeColor = System::Drawing::SystemColors::HighlightText;
 			dataGridViewCellStyle1->WrapMode = System::Windows::Forms::DataGridViewTriState::True;
-			this->dataGridView1->ColumnHeadersDefaultCellStyle = dataGridViewCellStyle1;
-			this->dataGridView1->ColumnHeadersHeightSizeMode = System::Windows::Forms::DataGridViewColumnHeadersHeightSizeMode::AutoSize;
-			this->dataGridView1->Columns->AddRange(gcnew cli::array< System::Windows::Forms::DataGridViewColumn^  >(1) { this->TimeCol });
+			this->dataGridView->ColumnHeadersDefaultCellStyle = dataGridViewCellStyle1;
+			this->dataGridView->ColumnHeadersHeightSizeMode = System::Windows::Forms::DataGridViewColumnHeadersHeightSizeMode::AutoSize;
+			this->dataGridView->Columns->AddRange(gcnew cli::array< System::Windows::Forms::DataGridViewColumn^  >(1) { this->TimeCol });
 			dataGridViewCellStyle3->Alignment = System::Windows::Forms::DataGridViewContentAlignment::MiddleCenter;
 			dataGridViewCellStyle3->BackColor = System::Drawing::SystemColors::Window;
 			dataGridViewCellStyle3->Font = (gcnew System::Drawing::Font(L"MS UI Gothic", 9, System::Drawing::FontStyle::Regular, System::Drawing::GraphicsUnit::Point,
@@ -212,14 +215,14 @@ namespace TestSample {
 			dataGridViewCellStyle3->SelectionBackColor = System::Drawing::SystemColors::Highlight;
 			dataGridViewCellStyle3->SelectionForeColor = System::Drawing::SystemColors::HighlightText;
 			dataGridViewCellStyle3->WrapMode = System::Windows::Forms::DataGridViewTriState::False;
-			this->dataGridView1->DefaultCellStyle = dataGridViewCellStyle3;
-			this->dataGridView1->Dock = System::Windows::Forms::DockStyle::Fill;
-			this->dataGridView1->Location = System::Drawing::Point(0, 0);
-			this->dataGridView1->Name = L"dataGridView1";
-			this->dataGridView1->RowHeadersVisible = false;
-			this->dataGridView1->RowTemplate->Height = 21;
-			this->dataGridView1->Size = System::Drawing::Size(149, 169);
-			this->dataGridView1->TabIndex = 0;
+			this->dataGridView->DefaultCellStyle = dataGridViewCellStyle3;
+			this->dataGridView->Dock = System::Windows::Forms::DockStyle::Fill;
+			this->dataGridView->Location = System::Drawing::Point(0, 0);
+			this->dataGridView->Name = L"dataGridView";
+			this->dataGridView->RowHeadersVisible = false;
+			this->dataGridView->RowTemplate->Height = 21;
+			this->dataGridView->Size = System::Drawing::Size(149, 169);
+			this->dataGridView->TabIndex = 0;
 			// 
 			// TimeCol
 			// 
@@ -228,9 +231,11 @@ namespace TestSample {
 			this->TimeCol->HeaderText = L"Time";
 			this->TimeCol->Name = L"TimeCol";
 			// 
-			// BackgroundTicer
+			// timer_
 			// 
-			this->BackgroundTicer->DoWork += gcnew System::ComponentModel::DoWorkEventHandler(this, &FormStopWatch::BackgroundTicer_DoWork);
+			this->timer_->Enabled = true;
+			this->timer_->Interval = 10;
+			this->timer_->Tick += gcnew System::EventHandler(this, &FormStopWatch::timer__Tick);
 			// 
 			// FormStopWatch
 			// 
@@ -239,7 +244,9 @@ namespace TestSample {
 			this->ClientSize = System::Drawing::Size(452, 354);
 			this->Controls->Add(this->BaseSplitContainer);
 			this->Name = L"FormStopWatch";
+			this->StartPosition = System::Windows::Forms::FormStartPosition::CenterScreen;
 			this->Text = L"FormStopWatch";
+			this->Load += gcnew System::EventHandler(this, &FormStopWatch::FormStopWatch_Load);
 			this->BaseSplitContainer->Panel1->ResumeLayout(false);
 			this->BaseSplitContainer->Panel2->ResumeLayout(false);
 			(cli::safe_cast<System::ComponentModel::ISupportInitialize^>(this->BaseSplitContainer))->EndInit();
@@ -249,31 +256,56 @@ namespace TestSample {
 			this->ControlSplitContainer->Panel2->ResumeLayout(false);
 			(cli::safe_cast<System::ComponentModel::ISupportInitialize^>(this->ControlSplitContainer))->EndInit();
 			this->ControlSplitContainer->ResumeLayout(false);
-			(cli::safe_cast<System::ComponentModel::ISupportInitialize^>(this->dataGridView1))->EndInit();
+			(cli::safe_cast<System::ComponentModel::ISupportInitialize^>(this->dataGridView))->EndInit();
 			this->ResumeLayout(false);
 
 		}
 #pragma endregion
 
-	private:		
-		//Timerが動いているか判定
-		bool isStart = false;
+	private:
+		//データ保存ファイルパス
+		//C:\Users\[ユーザー名]\AppData\Local\Temp//stopwatch.txt
+		String^ SaveFilePath = System::IO::Path::GetTempPath() + "stopwatch.txt";
 
-		//自動生成イベントメソッド
+		int TimeCs = 0;		//ミリ秒
+		int TimeSec = 0;	//秒
+		int TimeMin = 0;	//分
+
+		bool IsActive = false;
+
+		///自動生成イベントメソッド///
+
+		//起動時処理されるイベント
+		System::Void FormStopWatch_Load(System::Object^ sender, System::EventArgs^ e);
+
 		//Startボタンクリック
 		System::Void BtnStart_Click(System::Object^ sender, System::EventArgs^ e);
+
 		//Stopボタンクリック
 		System::Void BtnStop_Click(System::Object^ sender, System::EventArgs^ e);
+
 		//Resetボタンクリック
 		System::Void BtnReset_Click(System::Object^ sender, System::EventArgs^ e);
+
 		//Rapボタンクリックイベント
 		System::Void BtnRapTime_Click(System::Object^ sender, System::EventArgs^ e);
+
 		//Saveボタンクリック
 		System::Void BtnSave_Click(System::Object^ sender, System::EventArgs^ e);
-		//バックグラウンドワーカ
-		System::Void BackgroundTicer_DoWork(System::Object^ sender, System::ComponentModel::DoWorkEventArgs^ e);
+
+		//Timerイベント
+		System::Void timer__Tick(System::Object^ sender, System::EventArgs^ e);
+
+
+		///ユーザ定義メソッド///
+
+		//初期化
+		System::Void ResetTime();
+
+		//PicBox描画処理
+		System::Void DrawTime();
 		
-		//Timerカウントメソッド
-		System::Void TimerCount();
-};
+		//過去のデータ読み込み
+		System::Void ReadFile();
+	};
 }
