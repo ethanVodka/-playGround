@@ -167,6 +167,9 @@
     <EmbeddedResource Include="FormSelectTools.resx">
       <DependentUpon>FormSelectTools.h</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="Tools\FormCalculator.resx">
+      <DependentUpon>Tools\FormCalculator.h</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="Tools\FormStopWatch.resx">
       <DependentUpon>Tools\FormStopWatch.h</DependentUpon>
     </EmbeddedResource>

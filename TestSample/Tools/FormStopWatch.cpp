@@ -6,12 +6,12 @@ System::Void TestSample::FormStopWatch::FormStopWatch_Load(System::Object^ sende
 	//以前保存されたファイルが存在する場合
 	if (System::IO::File::Exists(SaveFilePath))
 	{
-		Windows::Forms::DialogResult^ result;
+		Windows::Forms::DialogResult result;
 		result = MessageBox::Show("以前のデータがありますが開きますか", "Question", MessageBoxButtons::OKCancel, MessageBoxIcon::Question);
 		
-		//OKクリック時
-		if (result = Windows::Forms::DialogResult::OK)
+		if (result == Windows::Forms::DialogResult::OK)
 		{
+			//OKクリック時
 			ReadFile();
 		}
 		else
