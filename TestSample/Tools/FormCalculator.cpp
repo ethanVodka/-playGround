@@ -56,8 +56,11 @@ System::Void TestSample::FormCalculator::Operatrion_Click(System::Object^ sender
 
 System::Void TestSample::FormCalculator::btnClear_Click(System::Object^ sender, System::EventArgs^ e)
 {
-	//テキストボックスの後ろから一文字削除
-	TxtBox->Text = TxtBox->Text->Substring(0, TxtBox->Text->Length - 1);
+	if (TxtBox->Text != "")
+	{
+		//テキストボックスの後ろから一文字削除
+		TxtBox->Text = TxtBox->Text->Substring(0, TxtBox->Text->Length - 1);
+	}
 }
 
 System::Void TestSample::FormCalculator::BtnAllClear_Click(System::Object^ sender, System::EventArgs^ e)
@@ -99,6 +102,12 @@ System::Void TestSample::FormCalculator::SetCalcLine(String^ value)
 	//文字列描画するときのフォント指定
 	System::Drawing::Font^ objFnt = gcnew System::Drawing::Font("MS UI Gothic", 60);
 
+	//小数点描画時あふれるのを防ぐ
+	while (value->Length > 10)
+	{
+		value = value->Substring(0, value->Length - 1);
+	}
+
 	//grapicsの文字列描画メソッド
 	//引数 （描画する文字列、フォント、筆の色、描画開始位置X、描画開始位置Y）
 	objGrp->DrawString(value, objFnt, Brushes::Black, 20, PicBox->Height * 0.2f);
@@ -110,7 +119,10 @@ System::Void TestSample::FormCalculator::SetCalcLine(String^ value)
 	{
 		//保存のため格納
 		UserInput += TxtBox->Text + " = " + value + "\n";
-
+		//グリッドに一行追加
+		DataGrid->Rows->Add();
+		//グリッドの一番下の行にラップタイムを表示
+		DataGrid->Rows[DataGrid->RowCount - 1]->Cells[0]->Value = TxtBox->Text + " = " + value;
 		//表示初期化
 		TxtBox->Text = String::Empty;
 	}

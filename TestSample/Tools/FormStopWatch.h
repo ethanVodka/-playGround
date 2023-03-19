@@ -264,8 +264,7 @@ namespace TestSample {
 
 	private:
 		//データ保存ファイルパス
-		//C:\Users\[ユーザー名]\AppData\Local\Temp//stopwatch.txt
-		String^ SaveFilePath = System::IO::Path::GetTempPath() + "stopwatch.txt";
+		String^ SaveFilePath = "stopwatch.txt";
 
 		int TimeCs = 0;		//ミリ秒
 		int TimeSec = 0;	//秒
