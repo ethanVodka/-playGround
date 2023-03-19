@@ -571,8 +571,6 @@ namespace TestSample {
 
 
 			return Convert::ToDouble(stack->Pop());
-
-			return 0.0;
 		}
 
 		System::Void FormCalculator_Load(System::Object^ sender, System::EventArgs^ e)
