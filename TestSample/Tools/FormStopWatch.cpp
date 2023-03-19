@@ -133,7 +133,7 @@ System::Void TestSample::FormStopWatch::DrawTime()
 
 	//grapicsの文字列描画メソッド
 	//引数 （描画する文字列、フォント、筆の色、描画開始位置X、描画開始位置Y）
-	objGrp->DrawString(TimeMin.ToString("#00") + " : " + TimeSec.ToString("#00") + " : " + TimeCs.ToString("#00"), objFnt, Brushes::Black, 20, PicBox->Height * 0.2);
+	objGrp->DrawString(TimeMin.ToString("#00") + " : " + TimeSec.ToString("#00") + " : " + TimeCs.ToString("#00"), objFnt, Brushes::Black, 20, PicBox->Height * 0.2f);
 
 	//キャンバスの絵をpictureboxに映す
 	PicBox->Image = objBmp;
