@@ -13,9 +13,11 @@ System::Void TestSample::FormStopWatch::FormStopWatch_Load(System::Object^ sende
 		{
 			//OKƒNƒŠƒbƒNŽž
 			ReadFile();
+			DrawTime();
 		}
 		else
 		{
+			DrawTime();
 			return;
 		}
 	}

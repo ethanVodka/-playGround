@@ -11,7 +11,8 @@ System::Void TestSample::FormCalculator::Number_Click(System::Object^ sender, Sy
 	}
 	else
 	{
-		if (TxtBox->Text->Contains(".") == false)
+		array<String^>^ splitStr = TxtBox->Text->Split('/', '+', '-', '*');
+		if (splitStr[splitStr->Length - 1]->Contains(".") == false)
 		{
 			TxtBox->Text += btn->Text;
 		}
@@ -110,7 +111,7 @@ System::Void TestSample::FormCalculator::SetCalcLine(String^ value)
 
 	//grapicsの文字列描画メソッド
 	//引数 （描画する文字列、フォント、筆の色、描画開始位置X、描画開始位置Y）
-	objGrp->DrawString(value, objFnt, Brushes::Black, 20, PicBox->Height * 0.2f);
+	objGrp->DrawString(value, objFnt, Brushes::Black, 20, PicBox->Height * 0.0f);
 
 	//キャンバスの絵をpictureboxに映す
 	PicBox->Image = objBmp;
