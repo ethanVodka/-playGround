@@ -193,27 +193,29 @@ System::Void gdsreader::GdsViewer::GetPolygon(gdstk::Array<Polygon*> polys, gdst
 
 System::Void gdsreader::GdsViewer::Btn_Do_Click(System::Object^ sender, System::EventArgs^ e)
 {
-	GdsPolygons[DisplayLayer]->plygons_list = Utils::Common::UClipper::CombinePolygons(GdsPolygons[DisplayLayer]->plygons_list, 1.0);
+	GdsPolygons[DisplayLayer]->plygons_list = Utils::Common::UClipper::RemoveHoles(GdsPolygons[DisplayLayer]->plygons_list, 1000.0);
+	
+	//GdsPolygons[DisplayLayer]->plygons_list = Utils::Common::UClipper::CombinePolygons(GdsPolygons[DisplayLayer]->plygons_list, 1.0);
 
-	List<List<GPoint^>^>^ outer = gcnew List<List<GPoint^>^>();
-	List<List<GPoint^>^>^ inner = gcnew List<List<GPoint^>^>();
+	//List<List<GPoint^>^>^ outer = gcnew List<List<GPoint^>^>();
+	//List<List<GPoint^>^>^ inner = gcnew List<List<GPoint^>^>();
 
-	for each (List<GPoint^> ^ poly in GdsPolygons[DisplayLayer]->plygons_list)
-	{
-		if (Utils::Common::UClipper::IsClockwise(poly))
-		{
-			outer->Add(poly);
-		}
-		else
-		{
-			inner->Add(poly);
-		}
-	}
+	//for each (List<GPoint^> ^ poly in GdsPolygons[DisplayLayer]->plygons_list)
+	//{
+	//	if (Utils::Common::UClipper::IsClockwise(poly))
+	//	{
+	//		outer->Add(poly);
+	//	}
+	//	else
+	//	{
+	//		inner->Add(poly);
+	//	}
+	//}
 
-	List<GPoint^>^ counter = Utils::Common::UClipper::SubtractPolygons(outer[0], inner[0]);
+	//List<GPoint^>^ counter = Utils::Common::UClipper::SubtractPolygons(outer[0], inner[0]);
 
-	GdsPolygons[DisplayLayer]->plygons_list = gcnew List<List<GPoint^>^>();
-	GdsPolygons[DisplayLayer]->plygons_list->Add(counter);
+	//GdsPolygons[DisplayLayer]->plygons_list = gcnew List<List<GPoint^>^>();
+	//GdsPolygons[DisplayLayer]->plygons_list->Add(counter);
 
 	// •`‰æˆ—
 	DrawPolygon(GdsPolygons[DisplayLayer]->plygons_list, SCALE);
