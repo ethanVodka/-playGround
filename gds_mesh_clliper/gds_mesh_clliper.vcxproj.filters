@@ -1,0 +1,130 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="4.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <ItemGroup>
+    <Filter Include="ソース ファイル">
+      <UniqueIdentifier>{4FC737F1-C7A5-4376-A066-2A32D752A2FF}</UniqueIdentifier>
+      <Extensions>cpp;c;cc;cxx;c++;cppm;ixx;def;odl;idl;hpj;bat;asm;asmx</Extensions>
+    </Filter>
+    <Filter Include="ヘッダー ファイル">
+      <UniqueIdentifier>{93995380-89BD-4b04-88EB-625FBE52EBFB}</UniqueIdentifier>
+      <Extensions>h;hh;hpp;hxx;h++;hm;inl;inc;ipp;xsd</Extensions>
+    </Filter>
+    <Filter Include="リソース ファイル">
+      <UniqueIdentifier>{67DA6AB6-F800-4c08-8B7A-83BB121AAD01}</UniqueIdentifier>
+      <Extensions>rc;ico;cur;bmp;dlg;rc2;rct;bin;rgs;gif;jpg;jpeg;jpe;resx;tiff;tif;png;wav;mfcribbon-ms</Extensions>
+    </Filter>
+    <Filter Include="src">
+      <UniqueIdentifier>{4e56293e-1346-4e4a-96a0-a67e0244f4d2}</UniqueIdentifier>
+    </Filter>
+  </ItemGroup>
+  <ItemGroup>
+    <ClCompile Include="gds_mesh_clliper.cpp">
+      <Filter>ソース ファイル</Filter>
+    </ClCompile>
+    <ClCompile Include="src\cell.cpp">
+      <Filter>src</Filter>
+    </ClCompile>
+    <ClCompile Include="src\clipper_tools.cpp">
+      <Filter>src</Filter>
+    </ClCompile>
+    <ClCompile Include="src\curve.cpp">
+      <Filter>src</Filter>
+    </ClCompile>
+    <ClCompile Include="src\flexpath.cpp">
+      <Filter>src</Filter>
+    </ClCompile>
+    <ClCompile Include="src\gdsii.cpp">
+      <Filter>src</Filter>
+    </ClCompile>
+    <ClCompile Include="src\label.cpp">
+      <Filter>src</Filter>
+    </ClCompile>
+    <ClCompile Include="src\library.cpp">
+      <Filter>src</Filter>
+    </ClCompile>
+    <ClCompile Include="src\oasis.cpp">
+      <Filter>src</Filter>
+    </ClCompile>
+    <ClCompile Include="src\polygon.cpp">
+      <Filter>src</Filter>
+    </ClCompile>
+    <ClCompile Include="src\property.cpp">
+      <Filter>src</Filter>
+    </ClCompile>
+    <ClCompile Include="src\rawcell.cpp">
+      <Filter>src</Filter>
+    </ClCompile>
+    <ClCompile Include="src\reference.cpp">
+      <Filter>src</Filter>
+    </ClCompile>
+    <ClCompile Include="src\repetition.cpp">
+      <Filter>src</Filter>
+    </ClCompile>
+    <ClCompile Include="src\robustpath.cpp">
+      <Filter>src</Filter>
+    </ClCompile>
+    <ClCompile Include="src\style.cpp">
+      <Filter>src</Filter>
+    </ClCompile>
+    <ClCompile Include="src\utils.cpp">
+      <Filter>src</Filter>
+    </ClCompile>
+    <ClCompile Include="src\clipper.cpp">
+      <Filter>src</Filter>
+    </ClCompile>
+    <ClCompile Include="src\accessors_r.c">
+      <Filter>src</Filter>
+    </ClCompile>
+    <ClCompile Include="src\geom_r.c">
+      <Filter>src</Filter>
+    </ClCompile>
+    <ClCompile Include="src\geom2_r.c">
+      <Filter>src</Filter>
+    </ClCompile>
+    <ClCompile Include="src\global_r.c">
+      <Filter>src</Filter>
+    </ClCompile>
+    <ClCompile Include="src\io_r.c">
+      <Filter>src</Filter>
+    </ClCompile>
+    <ClCompile Include="src\libqhull_r.c">
+      <Filter>src</Filter>
+    </ClCompile>
+    <ClCompile Include="src\mem_r.c">
+      <Filter>src</Filter>
+    </ClCompile>
+    <ClCompile Include="src\merge_r.c">
+      <Filter>src</Filter>
+    </ClCompile>
+    <ClCompile Include="src\poly_r.c">
+      <Filter>src</Filter>
+    </ClCompile>
+    <ClCompile Include="src\poly2_r.c">
+      <Filter>src</Filter>
+    </ClCompile>
+    <ClCompile Include="src\qset_r.c">
+      <Filter>src</Filter>
+    </ClCompile>
+    <ClCompile Include="src\random_r.c">
+      <Filter>src</Filter>
+    </ClCompile>
+    <ClCompile Include="src\rboxlib_r.c">
+      <Filter>src</Filter>
+    </ClCompile>
+    <ClCompile Include="src\stat_r.c">
+      <Filter>src</Filter>
+    </ClCompile>
+    <ClCompile Include="src\user_r.c">
+      <Filter>src</Filter>
+    </ClCompile>
+    <ClCompile Include="src\usermem_r.c">
+      <Filter>src</Filter>
+    </ClCompile>
+    <ClCompile Include="src\userprintf_r.c">
+      <Filter>src</Filter>
+    </ClCompile>
+    <ClCompile Include="src\userprintf_rbox_r.c">
+      <Filter>src</Filter>
+    </ClCompile>
+  </ItemGroup>
+</Project>
