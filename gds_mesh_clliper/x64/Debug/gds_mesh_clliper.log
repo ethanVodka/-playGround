@@ -1,0 +1,8 @@
+﻿  gds_mesh_clliper.cpp
+C:\Users\pikas\Documents\Work\gds_mesh_clliper\include\gdstk\cell.hpp(1,1): warning C4819: ファイルは、現在のコード ページ (932) で表示できない文字を含んでいます。データの損失を防ぐために、ファイルを Unicode 形式で保存してください。
+C:\Users\pikas\Documents\Work\gds_mesh_clliper\include\gdstk\utils.hpp(1,1): warning C4819: ファイルは、現在のコード ページ (932) で表示できない文字を含んでいます。データの損失を防ぐために、ファイルを Unicode 形式で保存してください。
+C:\Users\pikas\Documents\Work\gds_mesh_clliper\include\gdstk\repetition.hpp(1,1): warning C4819: ファイルは、現在のコード ページ (932) で表示できない文字を含んでいます。データの損失を防ぐために、ファイルを Unicode 形式で保存してください。
+C:\Users\pikas\Documents\Work\gds_mesh_clliper\include\gdstk\polygon.hpp(1,1): warning C4819: ファイルは、現在のコード ページ (932) で表示できない文字を含んでいます。データの損失を防ぐために、ファイルを Unicode 形式で保存してください。
+C:\Users\pikas\Documents\Work\gds_mesh_clliper\include\gdstk\gdswriter.hpp(67,18): warning C4996: 'fopen': This function or variable may be unsafe. Consider using fopen_s instead. To disable deprecation, use _CRT_SECURE_NO_WARNINGS. See online help for details.
+C:\Users\pikas\Documents\Work\gds_mesh_clliper\include\gdstk\sort.hpp(1,1): warning C4819: ファイルは、現在のコード ページ (932) で表示できない文字を含んでいます。データの損失を防ぐために、ファイルを Unicode 形式で保存してください。
+  gds_mesh_clliper.vcxproj -> C:\Users\pikas\Documents\Work\gds_mesh_clliper\x64\Debug\gds_mesh_clliper.exe

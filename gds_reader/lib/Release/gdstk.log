@@ -1,0 +1,92 @@
+﻿  cell.cpp
+C:\Users\pikas\Documents\Source\gdstk\src\gdstk\cell.h(1,1): warning C4819: ファイルは、現在のコード ページ (932) で表示できない文字を含んでいます。データの損失を防ぐために、ファイルを Unicode 形式で保存してください。
+C:\Users\pikas\Documents\Source\gdstk\src\gdstk\utils.h(1,1): warning C4819: ファイルは、現在のコード ページ (932) で表示できない文字を含んでいます。データの損失を防ぐために、ファイルを Unicode 形式で保存してください。
+C:\Users\pikas\Documents\Source\gdstk\src\gdstk\repetition.h(1,1): warning C4819: ファイルは、現在のコード ページ (932) で表示できない文字を含んでいます。データの損失を防ぐために、ファイルを Unicode 形式で保存してください。
+C:\Users\pikas\Documents\Source\gdstk\src\gdstk\polygon.h(1,1): warning C4819: ファイルは、現在のコード ページ (932) で表示できない文字を含んでいます。データの損失を防ぐために、ファイルを Unicode 形式で保存してください。
+C:\Users\pikas\Documents\Source\gdstk\src\gdstk\sort.h(1,1): warning C4819: ファイルは、現在のコード ページ (932) で表示できない文字を含んでいます。データの損失を防ぐために、ファイルを Unicode 形式で保存してください。
+C:\Users\pikas\Documents\Source\gdstk\src\gdstk\cell.cpp(881,17): warning C4996: 'fopen': This function or variable may be unsafe. Consider using fopen_s instead. To disable deprecation, use _CRT_SECURE_NO_WARNINGS. See online help for details.
+  clipper.cpp
+  clipper_tools.cpp
+C:\Users\pikas\Documents\Source\gdstk\src\gdstk\polygon.h(1,1): warning C4819: ファイルは、現在のコード ページ (932) で表示できない文字を含んでいます。データの損失を防ぐために、ファイルを Unicode 形式で保存してください。
+C:\Users\pikas\Documents\Source\gdstk\src\gdstk\utils.h(1,1): warning C4819: ファイルは、現在のコード ページ (932) で表示できない文字を含んでいます。データの損失を防ぐために、ファイルを Unicode 形式で保存してください。
+C:\Users\pikas\Documents\Source\gdstk\src\gdstk\repetition.h(1,1): warning C4819: ファイルは、現在のコード ページ (932) で表示できない文字を含んでいます。データの損失を防ぐために、ファイルを Unicode 形式で保存してください。
+C:\Users\pikas\Documents\Source\gdstk\src\gdstk\sort.h(1,1): warning C4819: ファイルは、現在のコード ページ (932) で表示できない文字を含んでいます。データの損失を防ぐために、ファイルを Unicode 形式で保存してください。
+  curve.cpp
+C:\Users\pikas\Documents\Source\gdstk\src\gdstk\utils.h(1,1): warning C4819: ファイルは、現在のコード ページ (932) で表示できない文字を含んでいます。データの損失を防ぐために、ファイルを Unicode 形式で保存してください。
+  flexpath.cpp
+C:\Users\pikas\Documents\Source\gdstk\src\gdstk\utils.h(1,1): warning C4819: ファイルは、現在のコード ページ (932) で表示できない文字を含んでいます。データの損失を防ぐために、ファイルを Unicode 形式で保存してください。
+C:\Users\pikas\Documents\Source\gdstk\src\gdstk\repetition.h(1,1): warning C4819: ファイルは、現在のコード ページ (932) で表示できない文字を含んでいます。データの損失を防ぐために、ファイルを Unicode 形式で保存してください。
+C:\Users\pikas\Documents\Source\gdstk\src\gdstk\polygon.h(1,1): warning C4819: ファイルは、現在のコード ページ (932) で表示できない文字を含んでいます。データの損失を防ぐために、ファイルを Unicode 形式で保存してください。
+  gdsii.cpp
+C:\Users\pikas\Documents\Source\gdstk\src\gdstk\utils.h(1,1): warning C4819: ファイルは、現在のコード ページ (932) で表示できない文字を含んでいます。データの損失を防ぐために、ファイルを Unicode 形式で保存してください。
+  label.cpp
+C:\Users\pikas\Documents\Source\gdstk\src\gdstk\label.cpp(1,1): warning C4819: ファイルは、現在のコード ページ (932) で表示できない文字を含んでいます。データの損失を防ぐために、ファイルを Unicode 形式で保存してください。
+C:\Users\pikas\Documents\Source\gdstk\src\gdstk\utils.h(1,1): warning C4819: ファイルは、現在のコード ページ (932) で表示できない文字を含んでいます。データの損失を防ぐために、ファイルを Unicode 形式で保存してください。
+C:\Users\pikas\Documents\Source\gdstk\src\gdstk\repetition.h(1,1): warning C4819: ファイルは、現在のコード ページ (932) で表示できない文字を含んでいます。データの損失を防ぐために、ファイルを Unicode 形式で保存してください。
+  library.cpp
+C:\Users\pikas\Documents\Source\gdstk\src\gdstk\cell.h(1,1): warning C4819: ファイルは、現在のコード ページ (932) で表示できない文字を含んでいます。データの損失を防ぐために、ファイルを Unicode 形式で保存してください。
+C:\Users\pikas\Documents\Source\gdstk\src\gdstk\utils.h(1,1): warning C4819: ファイルは、現在のコード ページ (932) で表示できない文字を含んでいます。データの損失を防ぐために、ファイルを Unicode 形式で保存してください。
+C:\Users\pikas\Documents\Source\gdstk\src\gdstk\repetition.h(1,1): warning C4819: ファイルは、現在のコード ページ (932) で表示できない文字を含んでいます。データの損失を防ぐために、ファイルを Unicode 形式で保存してください。
+C:\Users\pikas\Documents\Source\gdstk\src\gdstk\polygon.h(1,1): warning C4819: ファイルは、現在のコード ページ (932) で表示できない文字を含んでいます。データの損失を防ぐために、ファイルを Unicode 形式で保存してください。
+C:\Users\pikas\Documents\Source\gdstk\src\gdstk\library.cpp(321,17): warning C4996: 'fopen': This function or variable may be unsafe. Consider using fopen_s instead. To disable deprecation, use _CRT_SECURE_NO_WARNINGS. See online help for details.
+C:\Users\pikas\Documents\Source\gdstk\src\gdstk\library.cpp(419,16): warning C4996: 'fopen': This function or variable may be unsafe. Consider using fopen_s instead. To disable deprecation, use _CRT_SECURE_NO_WARNINGS. See online help for details.
+C:\Users\pikas\Documents\Source\gdstk\src\gdstk\library.cpp(947,16): warning C4996: 'fopen': This function or variable may be unsafe. Consider using fopen_s instead. To disable deprecation, use _CRT_SECURE_NO_WARNINGS. See online help for details.
+C:\Users\pikas\Documents\Source\gdstk\src\gdstk\library.cpp(1337,15): warning C4996: 'fopen': This function or variable may be unsafe. Consider using fopen_s instead. To disable deprecation, use _CRT_SECURE_NO_WARNINGS. See online help for details.
+C:\Users\pikas\Documents\Source\gdstk\src\gdstk\library.cpp(2532,16): warning C4996: 'fopen': This function or variable may be unsafe. Consider using fopen_s instead. To disable deprecation, use _CRT_SECURE_NO_WARNINGS. See online help for details.
+C:\Users\pikas\Documents\Source\gdstk\src\gdstk\library.cpp(2574,17): warning C4996: 'fopen': This function or variable may be unsafe. Consider using fopen_s instead. To disable deprecation, use _CRT_SECURE_NO_WARNINGS. See online help for details.
+C:\Users\pikas\Documents\Source\gdstk\src\gdstk\library.cpp(2576,17): warning C4996: 'fopen': This function or variable may be unsafe. Consider using fopen_s instead. To disable deprecation, use _CRT_SECURE_NO_WARNINGS. See online help for details.
+C:\Users\pikas\Documents\Source\gdstk\src\gdstk\library.cpp(2651,16): warning C4996: 'fopen': This function or variable may be unsafe. Consider using fopen_s instead. To disable deprecation, use _CRT_SECURE_NO_WARNINGS. See online help for details.
+C:\Users\pikas\Documents\Source\gdstk\src\gdstk\library.cpp(2778,16): warning C4996: 'fopen': This function or variable may be unsafe. Consider using fopen_s instead. To disable deprecation, use _CRT_SECURE_NO_WARNINGS. See online help for details.
+C:\Users\pikas\Documents\Source\gdstk\src\gdstk\library.cpp(2810,16): warning C4996: 'fopen': This function or variable may be unsafe. Consider using fopen_s instead. To disable deprecation, use _CRT_SECURE_NO_WARNINGS. See online help for details.
+  oasis.cpp
+C:\Users\pikas\Documents\Source\gdstk\src\gdstk\utils.h(1,1): warning C4819: ファイルは、現在のコード ページ (932) で表示できない文字を含んでいます。データの損失を防ぐために、ファイルを Unicode 形式で保存してください。
+C:\Users\pikas\Documents\Source\gdstk\src\gdstk\repetition.h(1,1): warning C4819: ファイルは、現在のコード ページ (932) で表示できない文字を含んでいます。データの損失を防ぐために、ファイルを Unicode 形式で保存してください。
+C:\Users\pikas\Documents\Source\gdstk\src\gdstk\sort.h(1,1): warning C4819: ファイルは、現在のコード ページ (932) で表示できない文字を含んでいます。データの損失を防ぐために、ファイルを Unicode 形式で保存してください。
+  polygon.cpp
+C:\Users\pikas\Documents\Source\gdstk\src\gdstk\polygon.cpp(1,1): warning C4819: ファイルは、現在のコード ページ (932) で表示できない文字を含んでいます。データの損失を防ぐために、ファイルを Unicode 形式で保存してください。
+C:\Users\pikas\Documents\Source\gdstk\src\gdstk\polygon.h(1,1): warning C4819: ファイルは、現在のコード ページ (932) で表示できない文字を含んでいます。データの損失を防ぐために、ファイルを Unicode 形式で保存してください。
+C:\Users\pikas\Documents\Source\gdstk\src\gdstk\utils.h(1,1): warning C4819: ファイルは、現在のコード ページ (932) で表示できない文字を含んでいます。データの損失を防ぐために、ファイルを Unicode 形式で保存してください。
+C:\Users\pikas\Documents\Source\gdstk\src\gdstk\repetition.h(1,1): warning C4819: ファイルは、現在のコード ページ (932) で表示できない文字を含んでいます。データの損失を防ぐために、ファイルを Unicode 形式で保存してください。
+C:\Users\pikas\Documents\Source\gdstk\src\gdstk\sort.h(1,1): warning C4819: ファイルは、現在のコード ページ (932) で表示できない文字を含んでいます。データの損失を防ぐために、ファイルを Unicode 形式で保存してください。
+C:\Users\pikas\Documents\Source\gdstk\src\gdstk\polygon.cpp(830,1): warning C4819: ファイルは、現在のコード ページ (932) で表示できない文字を含んでいます。データの損失を防ぐために、ファイルを Unicode 形式で保存してください。
+C:\Users\pikas\Documents\Source\gdstk\src\gdstk\polygon.cpp(1480,1): warning C4819: ファイルは、現在のコード ページ (932) で表示できない文字を含んでいます。データの損失を防ぐために、ファイルを Unicode 形式で保存してください。
+  property.cpp
+C:\Users\pikas\Documents\Source\gdstk\src\gdstk\utils.h(1,1): warning C4819: ファイルは、現在のコード ページ (932) で表示できない文字を含んでいます。データの損失を防ぐために、ファイルを Unicode 形式で保存してください。
+C:\Users\pikas\Documents\Source\gdstk\src\gdstk\repetition.h(1,1): warning C4819: ファイルは、現在のコード ページ (932) で表示できない文字を含んでいます。データの損失を防ぐために、ファイルを Unicode 形式で保存してください。
+  rawcell.cpp
+C:\Users\pikas\Documents\Source\gdstk\src\gdstk\utils.h(1,1): warning C4819: ファイルは、現在のコード ページ (932) で表示できない文字を含んでいます。データの損失を防ぐために、ファイルを Unicode 形式で保存してください。
+C:\Users\pikas\Documents\Source\gdstk\src\gdstk\rawcell.cpp(100,20): warning C4996: 'fopen': This function or variable may be unsafe. Consider using fopen_s instead. To disable deprecation, use _CRT_SECURE_NO_WARNINGS. See online help for details.
+  reference.cpp
+C:\Users\pikas\Documents\Source\gdstk\src\gdstk\utils.h(1,1): warning C4819: ファイルは、現在のコード ページ (932) で表示できない文字を含んでいます。データの損失を防ぐために、ファイルを Unicode 形式で保存してください。
+C:\Users\pikas\Documents\Source\gdstk\src\gdstk\repetition.h(1,1): warning C4819: ファイルは、現在のコード ページ (932) で表示できない文字を含んでいます。データの損失を防ぐために、ファイルを Unicode 形式で保存してください。
+C:\Users\pikas\Documents\Source\gdstk\src\gdstk\polygon.h(1,1): warning C4819: ファイルは、現在のコード ページ (932) で表示できない文字を含んでいます。データの損失を防ぐために、ファイルを Unicode 形式で保存してください。
+C:\Users\pikas\Documents\Source\gdstk\src\gdstk\cell.h(1,1): warning C4819: ファイルは、現在のコード ページ (932) で表示できない文字を含んでいます。データの損失を防ぐために、ファイルを Unicode 形式で保存してください。
+  repetition.cpp
+C:\Users\pikas\Documents\Source\gdstk\src\gdstk\repetition.h(1,1): warning C4819: ファイルは、現在のコード ページ (932) で表示できない文字を含んでいます。データの損失を防ぐために、ファイルを Unicode 形式で保存してください。
+C:\Users\pikas\Documents\Source\gdstk\src\gdstk\utils.h(1,1): warning C4819: ファイルは、現在のコード ページ (932) で表示できない文字を含んでいます。データの損失を防ぐために、ファイルを Unicode 形式で保存してください。
+  robustpath.cpp
+C:\Users\pikas\Documents\Source\gdstk\src\gdstk\utils.h(1,1): warning C4819: ファイルは、現在のコード ページ (932) で表示できない文字を含んでいます。データの損失を防ぐために、ファイルを Unicode 形式で保存してください。
+C:\Users\pikas\Documents\Source\gdstk\src\gdstk\repetition.h(1,1): warning C4819: ファイルは、現在のコード ページ (932) で表示できない文字を含んでいます。データの損失を防ぐために、ファイルを Unicode 形式で保存してください。
+C:\Users\pikas\Documents\Source\gdstk\src\gdstk\polygon.h(1,1): warning C4819: ファイルは、現在のコード ページ (932) で表示できない文字を含んでいます。データの損失を防ぐために、ファイルを Unicode 形式で保存してください。
+  style.cpp
+C:\Users\pikas\Documents\Source\gdstk\src\gdstk\utils.h(1,1): warning C4819: ファイルは、現在のコード ページ (932) で表示できない文字を含んでいます。データの損失を防ぐために、ファイルを Unicode 形式で保存してください。
+  utils.cpp
+C:\Users\pikas\Documents\Source\gdstk\src\gdstk\utils.h(1,1): warning C4819: ファイルは、現在のコード ページ (932) で表示できない文字を含んでいます。データの損失を防ぐために、ファイルを Unicode 形式で保存してください。
+  geom2_r.c
+  geom_r.c
+  global_r.c
+  io_r.c
+  libqhull_r.c
+  mem_r.c
+  merge_r.c
+  poly2_r.c
+  poly_r.c
+  qset_r.c
+  random_r.c
+  rboxlib_r.c
+  stat_r.c
+  usermem_r.c
+  userprintf_r.c
+  userprintf_rbox_r.c
+  user_r.c
+  gdstk.vcxproj -> C:\Users\pikas\Documents\Source\gdstk\x64\Release\gdstk.lib

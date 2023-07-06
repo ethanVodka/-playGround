@@ -1,0 +1,1 @@
+C:\Users\pikas\Documents\Source\gdstk\x64\Release\gdstk.lib

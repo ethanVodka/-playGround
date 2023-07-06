@@ -31,8 +31,6 @@ System::Void GdsViewer::Btn_Start_Click(System::Object^ sender, System::EventArg
 	{
 		IntPtr ptr = Marshal::StringToHGlobalAnsi(Tb_FilePath->Text);
 		const char* file_path = static_cast<char*>(ptr.ToPointer());
-
-		// 最後にメモリを解放する
 		Marshal::FreeHGlobal(ptr);
 
 		ErrorCode error_code = ErrorCode::NoError;
@@ -43,181 +41,50 @@ System::Void GdsViewer::Btn_Start_Click(System::Object^ sender, System::EventArg
 		}
 		else
 		{
-			gdstk::Set<gdstk::Tag> tags{};
-			lib.get_shape_tags(tags);
-			for (int64_t t = 0; t < tags.count; t++)
+			List<array<Point>^>^ gds_polygons = gcnew List<array<Point>^>();
+			// get all cell in gds file
+			gdstk::Array<Cell*> cells = lib.cell_array;
+			
+			for (int64_t i = 0; i < cells.count; i++)
 			{
-				// Tag
-				gdstk::Tag tag = tags.items[t].value;
-				// Polygon
-				gdstk::Array<Polygon*> poly{};
-
-				for (int64_t i = 0; i < lib.cell_array.count; i++)
+				// get cell's polygons
+				gdstk::Array<Polygon*> polygons = cells[i]->polygon_array;
+				for (int64_t j = 0; j < polygons.count; j++)
 				{
-					// Cell
-					Cell* cell = lib.cell_array[i];
-					cell->get_polygons(true, true, 1, true, tag, poly);
-				}
-
-				if (poly.count != 0)
-				{
-					Cob_SelectLayer->Items->Add(get_layer(tag));
-					GetPolygon(poly, tag);
+					// get olygon's point array, then add them to list of gds_polygons 
+					Polygon* poly = polygons[j];
+					array<Point>^ points = gcnew array<Point>(poly->point_array.count);
+					for (int p = 0; p < poly->point_array.count; p++)
+					{
+						points[p] = Point(poly->point_array[p].x, poly->point_array[p].y);
+					}
+					gds_polygons->Add(points);
 				}
 			}
-			// 描画処理
-			DrawPolygon(GdsPolygons[DisplayLayer]->plygons_list, SCALE);
+
+			// create closed polygon from closed polygon path
+			gds_polygons = Geometry::Clipping::CombinePolygons(gds_polygons);
+
+			List<array<Point>^>^ edges = gcnew List<array<Point>^>();
+			List<array<Point>^>^ holes = gcnew List<array<Point>^>();
+
+			Geometry::Clipping::DividePolygons(gds_polygons, holes, edges);
+			
+			// くり抜き二つのポリゴン生成
+			gds_polygons = Geometry::Clipping::CreateClosedPathWithHole(edges[0], holes[0]);
+
+
+			// path 形成
+			array<Point>^ p = Geometry::Clipping::MakeHolesInPolygon(edges[0], holes);
+
+			List<Geometry::GdsPolygon^>^ poly_set = Geometry::GdsPolygons::AnalyzePolygons(edges, holes);
+
+			return;
 		}
 	}
 	else
 	{
-		CreateGdsFile();
+		return;
 	}
-}
-System::Void GdsViewer::DrawPolygon(List<List<GPoint^>^>^ poly_list, double scale_factor)
-{
-	Bitmap^ bmp = gcnew Bitmap(PicBox->Width, PicBox->Height);
-	Graphics^ g = Graphics::FromImage(bmp);
-
-	for each (List<GPoint^> ^ originalPoints in poly_list)
-	{
-		// スケーリング後のポリゴンの頂点を定義
-		array<PointF>^ scaledPoints = gcnew array<PointF>(originalPoints->Count);
-		for (int i = 0; i < originalPoints->Count; i++)
-		{
-			scaledPoints[i].X = (float)(originalPoints[i]->X * scale_factor + LEFT_POSITION);
-			scaledPoints[i].Y = (float)(originalPoints[i]->Y * scale_factor + TOP_POSITION);
-		}
-
-		g->FillPolygon(Brushes::Red, scaledPoints);
-	}
-
-	PicBox->Image = bmp;
-}
-System::Void gdsreader::GdsViewer::ActionBtn_Click(System::Object^ sender, System::EventArgs^ e)
-{
-	Button^ btn = (Button^)sender;
-
-	if (btn->Name == "Btn_Up")
-	{
-		TOP_POSITION -= 20;
-	}
-	else if (btn->Name == "Btn_Down")
-	{
-		TOP_POSITION += 20;
-	}
-	else if (btn->Name == "Btn_Left")
-	{
-		LEFT_POSITION -= 20;
-	}
-	else if (btn->Name == "Btn_Right")
-	{
-		LEFT_POSITION += 20;
-	}
-	else if (btn->Name == "Btn_In")
-	{
-		SCALE += 0.5;
-	}
-	else if (btn->Name == "Btn_Out")
-	{
-		SCALE -= 0.5;
-	}
-
-	// 描画処理
-	DrawPolygon(GdsPolygons[DisplayLayer]->plygons_list, SCALE);
-
-	return System::Void();
-}
-
-System::Void gdsreader::GdsViewer::CreateGdsFile()
-{
-	Library lib = {};
-	lib.init("library", 1e-6, 1e-9);
-
-	Cell cell = {};
-	cell.name = copy_string("FIRST", NULL);
-	lib.cell_array.append(&cell);
-
-	Vec2 points[] = { {0, 0}, {50, 0}, {50, 50}, {0, 50}, {0, 0},
-					 {20, 20}, {20, 30}, {30, 30}, {30, 20}, {20, 20} };
-	Polygon* poly = (Polygon*)allocate_clear(sizeof(Polygon));
-
-	poly->point_array.capacity = 0;
-	poly->point_array.count = COUNT(points);
-	poly->point_array.items = points;
-
-	cell.polygon_array.append(poly);
-
-
-	lib.write_gds("first.gds", 0, NULL);
-
-	cell.clear();
-	lib.clear();
-}
-
-System::Void gdsreader::GdsViewer::Cob_SelectLayer_TextChanged(System::Object^ sender, System::EventArgs^ e)
-{
-	DisplayLayer = Cob_SelectLayer->SelectedIndex;
-
-	// 描画処理
-	DrawPolygon(GdsPolygons[DisplayLayer]->plygons_list, SCALE);
-}
-
-System::Void gdsreader::GdsViewer::GetPolygon(gdstk::Array<Polygon*> polys, gdstk::Tag tag)
-{
-	GdsPolygon^ _gdspoly = gcnew GdsPolygon();
-
-	for (int64_t i = 0; i < polys.count; i++)
-	{
-		Polygon* polygon = polys[i];
-		
-		// 現在ループのタグ層と異なるレイヤーのポリゴンはスキップ
-		if (get_layer(polygon->tag) != get_layer(tag))
-		{
-			continue;
-		}
-
-		List<GPoint^>^ _p = gcnew List<GPoint^>();
-		for (int64_t j = 0; j < polygon->point_array.count; j++)
-		{
-			double x, y;
-			Vec2 point = polygon->point_array[j];
-
-			_p->Add(gcnew GPoint(point.x, point.y));
-		}
-		_gdspoly->plygons_list->Add(_p);
-	}
-
-	GdsPolygons->Add(_gdspoly);
-}
-
-System::Void gdsreader::GdsViewer::Btn_Do_Click(System::Object^ sender, System::EventArgs^ e)
-{
-	GdsPolygons[DisplayLayer]->plygons_list = Utils::Common::UClipper::RemoveHoles(GdsPolygons[DisplayLayer]->plygons_list, 1000.0);
-	
-	//GdsPolygons[DisplayLayer]->plygons_list = Utils::Common::UClipper::CombinePolygons(GdsPolygons[DisplayLayer]->plygons_list, 1.0);
-
-	//List<List<GPoint^>^>^ outer = gcnew List<List<GPoint^>^>();
-	//List<List<GPoint^>^>^ inner = gcnew List<List<GPoint^>^>();
-
-	//for each (List<GPoint^> ^ poly in GdsPolygons[DisplayLayer]->plygons_list)
-	//{
-	//	if (Utils::Common::UClipper::IsClockwise(poly))
-	//	{
-	//		outer->Add(poly);
-	//	}
-	//	else
-	//	{
-	//		inner->Add(poly);
-	//	}
-	//}
-
-	//List<GPoint^>^ counter = Utils::Common::UClipper::SubtractPolygons(outer[0], inner[0]);
-
-	//GdsPolygons[DisplayLayer]->plygons_list = gcnew List<List<GPoint^>^>();
-	//GdsPolygons[DisplayLayer]->plygons_list->Add(counter);
-
-	// 描画処理
-	DrawPolygon(GdsPolygons[DisplayLayer]->plygons_list, SCALE);
 }
 

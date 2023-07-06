@@ -1,0 +1,3 @@
+C:\Users\pikas\Documents\Work\gds_mesh_clliper\x64\Debug\gds_mesh_clliper.vcxproj.CopyComplete
+C:\Users\pikas\Documents\Work\gds_mesh_clliper\x64\Debug\gds_mesh_clliper.exe
+C:\Users\pikas\Documents\Work\gds_mesh_clliper\x64\Debug\zlibd1.dll

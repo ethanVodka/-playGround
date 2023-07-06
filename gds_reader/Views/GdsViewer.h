@@ -175,7 +175,6 @@ namespace gdsreader {
 			this->Cob_SelectLayer->Name = L"Cob_SelectLayer";
 			this->Cob_SelectLayer->Size = System::Drawing::Size(137, 20);
 			this->Cob_SelectLayer->TabIndex = 6;
-			this->Cob_SelectLayer->TextChanged += gcnew System::EventHandler(this, &GdsViewer::Cob_SelectLayer_TextChanged);
 			// 
 			// Btn_Out
 			// 
@@ -185,7 +184,6 @@ namespace gdsreader {
 			this->Btn_Out->TabIndex = 5;
 			this->Btn_Out->Text = L"ZoomOut";
 			this->Btn_Out->UseVisualStyleBackColor = true;
-			this->Btn_Out->Click += gcnew System::EventHandler(this, &GdsViewer::ActionBtn_Click);
 			// 
 			// Btn_In
 			// 
@@ -195,7 +193,6 @@ namespace gdsreader {
 			this->Btn_In->TabIndex = 4;
 			this->Btn_In->Text = L"ZoomIn";
 			this->Btn_In->UseVisualStyleBackColor = true;
-			this->Btn_In->Click += gcnew System::EventHandler(this, &GdsViewer::ActionBtn_Click);
 			// 
 			// Btn_Down
 			// 
@@ -207,7 +204,6 @@ namespace gdsreader {
 			this->Btn_Down->TabIndex = 3;
 			this->Btn_Down->Text = L"«";
 			this->Btn_Down->UseVisualStyleBackColor = true;
-			this->Btn_Down->Click += gcnew System::EventHandler(this, &GdsViewer::ActionBtn_Click);
 			// 
 			// Btn_Left
 			// 
@@ -219,7 +215,6 @@ namespace gdsreader {
 			this->Btn_Left->TabIndex = 2;
 			this->Btn_Left->Text = L"©";
 			this->Btn_Left->UseVisualStyleBackColor = true;
-			this->Btn_Left->Click += gcnew System::EventHandler(this, &GdsViewer::ActionBtn_Click);
 			// 
 			// Btn_Right
 			// 
@@ -231,7 +226,6 @@ namespace gdsreader {
 			this->Btn_Right->TabIndex = 1;
 			this->Btn_Right->Text = L"¨";
 			this->Btn_Right->UseVisualStyleBackColor = true;
-			this->Btn_Right->Click += gcnew System::EventHandler(this, &GdsViewer::ActionBtn_Click);
 			// 
 			// Btn_Up
 			// 
@@ -243,7 +237,6 @@ namespace gdsreader {
 			this->Btn_Up->TabIndex = 0;
 			this->Btn_Up->Text = L"ª";
 			this->Btn_Up->UseVisualStyleBackColor = true;
-			this->Btn_Up->Click += gcnew System::EventHandler(this, &GdsViewer::ActionBtn_Click);
 			// 
 			// PicBox
 			// 
@@ -262,7 +255,6 @@ namespace gdsreader {
 			this->Btn_Do->TabIndex = 7;
 			this->Btn_Do->Text = L"ŽÀs";
 			this->Btn_Do->UseVisualStyleBackColor = true;
-			this->Btn_Do->Click += gcnew System::EventHandler(this, &GdsViewer::Btn_Do_Click);
 			// 
 			// GdsViewer
 			// 
@@ -287,7 +279,7 @@ namespace gdsreader {
 		}
 #pragma endregion
 	private: String^ GdsFile = String::Empty;
-		   List<List<GPoint^>^>^ POLY_LIST = gcnew List<List<GPoint^>^>();
+		   List<List<GPoint^>^>^ polygon_list = gcnew List<List<GPoint^>^>();
 
 		   List<GdsPolygon^>^ GdsPolygons = gcnew List<GdsPolygon^>();
 
@@ -299,13 +291,5 @@ namespace gdsreader {
 	private: System::Void Tb_FilePath_DragDrop(System::Object^ sender, System::Windows::Forms::DragEventArgs^ e);
 	private: System::Void Tb_FilePath_DragEnter(System::Object^ sender, System::Windows::Forms::DragEventArgs^ e);
 	private: System::Void Btn_Start_Click(System::Object^ sender, System::EventArgs^ e);
-	private: System::Void DrawPolygon(List<List<GPoint^>^>^ poly_list, double scale_factor);
-	private: System::Void ActionBtn_Click(System::Object^ sender, System::EventArgs^ e);
-	private: System::Void CreateGdsFile();
-	private: System::Void Cob_SelectLayer_TextChanged(System::Object^ sender, System::EventArgs^ e);
-	private: System::Void GetPolygon(gdstk::Array<Polygon*> polys, gdstk::Tag tag);
-	private: System::Void Btn_Do_Click(System::Object^ sender, System::EventArgs^ e);
-
-
 	};
 }

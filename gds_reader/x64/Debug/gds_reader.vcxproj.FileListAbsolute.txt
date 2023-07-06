@@ -1,0 +1,13 @@
+C:\Users\pikas\Documents\Source\gds_reader\x64\Debug\gds_reader.vcxproj.AssemblyReference.cache
+C:\Users\pikas\Documents\Source\gds_reader\x64\Debug\gds_reader.exe
+C:\Users\pikas\Documents\Source\gds_reader\x64\Debug\gdsreader.Views.GdsViewer.resources
+C:\Users\pikas\Documents\Source\gds_reader\x64\Debug\gds_reader.vcxproj.GenerateResource.cache
+C:\Users\pikas\Documents\Source\gds_reader\x64\Debug\gds_reader.vcxproj.CopyComplete
+C:\Users\pikas\Documents\Source\gds_reader\x64\Debug\zlibd1.dll
+C:\Users\pikas\Documents\Source\gds_reader\x64\Debug\Utils.dll
+C:\Users\pikas\Documents\Source\gds_reader\x64\Debug\clipper.dll
+C:\Users\pikas\Documents\Source\gds_reader\x64\Debug\netstandard.dll
+C:\Users\pikas\Documents\Source\gds_reader\x64\Debug\Utils.pdb
+C:\Users\pikas\Documents\Source\gds_reader\x64\Debug\Utils.dll.config
+C:\Users\pikas\Documents\Source\gds_reader\x64\Debug\Geometry.dll
+C:\Users\pikas\Documents\Source\gds_reader\x64\Debug\Geometry.pdb

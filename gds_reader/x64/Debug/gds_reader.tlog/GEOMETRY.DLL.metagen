@@ -1,0 +1,35 @@
+ImageRuntimeVersion: v4.0.30319
+Assembly Geometry, Version=1.0.*, Culture=ロケールに依存しない言語 (ロケールに依存しない国): 
+	hash=SHA1, flags=PublicKey
+Assembly mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089: 
+	hash=None, flags=None
+Assembly System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a: 
+	hash=None, flags=None
+Assembly clipper, Version=0.0.*, Culture=ロケールに依存しない言語 (ロケールに依存しない国): 
+	hash=None, flags=None
+Assembly System.Core, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089: 
+	hash=None, flags=None
+Class Geometry.Clipping: AutoLayout, AnsiClass, Class, Public, BeforeFieldInit
+    Void .ctor(): PrivateScope, Public, HideBySig, SpecialName, RTSpecialName
+  Methods:
+    CombinePolygons(List`1): PrivateScope, Public, Static, HideBySig
+    DividePolygons(List`1, List`1&(Out), List`1&(Out)): PrivateScope, Public, Static, HideBySig
+    IsHole(Point[]): PrivateScope, Public, Static, HideBySig
+    FilterPolygonsByArea(List`1, Double): PrivateScope, Public, HideBySig
+    CreateClosedPathWithHole(Point[], Point[]): PrivateScope, Public, Static, HideBySig
+    CreateSingleStrokePathWithHole(Point[], Point[]): PrivateScope, Public, Static, HideBySig
+    MakeHolesInPolygon(Point[], List`1): PrivateScope, Public, Static, HideBySig
+Class Geometry.GdsPolygon: AutoLayout, AnsiClass, Class, Public, BeforeFieldInit
+    Void .ctor(): PrivateScope, Public, HideBySig, SpecialName, RTSpecialName
+  Properties:
+    System.Drawing.Point[] Outer 'get set' : 
+    System.Collections.Generic.List`1[System.Drawing.Point[]] Holes 'get set' : 
+  Methods:
+    get_Outer(): PrivateScope, Public, HideBySig, SpecialName
+    set_Outer(Point[]): PrivateScope, Public, HideBySig, SpecialName
+    get_Holes(): PrivateScope, Public, HideBySig, SpecialName
+    set_Holes(List`1): PrivateScope, Public, HideBySig, SpecialName
+Class Geometry.GdsPolygons: AutoLayout, AnsiClass, Class, Public, BeforeFieldInit
+    Void .ctor(): PrivateScope, Public, HideBySig, SpecialName, RTSpecialName
+  Methods:
+    AnalyzePolygons(List`1, List`1): PrivateScope, Public, Static, HideBySig
