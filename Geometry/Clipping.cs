@@ -23,7 +23,7 @@ namespace Geometry
             {
                 var path = polygon.Select(p => new IntPoint(p.X, p.Y)).ToList();
                 // true means the path is closed
-                clipper.AddPath(path, PolyType.ptSubject, true); 
+                clipper.AddPath(path, PolyType.ptSubject, true);
             }
 
             List<List<IntPoint>> resultPolygons = new List<List<IntPoint>>();
@@ -56,11 +56,27 @@ namespace Geometry
 
                 if (Clipper.Orientation(intPolygon))
                 {
-                    polygonsWithoutHoles.Add(polygon);
+                    Point[] updatedPoints = new Point[polygon.Length + 1];
+
+                    // 既存の要素を新しい配列にコピーする
+                    Array.Copy(polygon, updatedPoints, polygon.Length);
+
+                    // 新しい配列の最後の位置に新たな要素を追加する
+                    updatedPoints[updatedPoints.Length - 1] = polygon[0];
+                    
+                    polygonsWithoutHoles.Add(updatedPoints);
                 }
                 else
                 {
-                    polygonsWithHoles.Add(polygon);
+                    Point[] updatedPoints = new Point[polygon.Length + 1];
+
+                    // 既存の要素を新しい配列にコピーする
+                    Array.Copy(polygon, updatedPoints, polygon.Length);
+
+                    // 新しい配列の最後の位置に新たな要素を追加する
+                    updatedPoints[updatedPoints.Length - 1] = polygon[0];
+
+                    polygonsWithHoles.Add(updatedPoints);
                 }
             }
         }
@@ -93,7 +109,7 @@ namespace Geometry
         /// <param name="polygons"></param>
         /// <param name="minArea"></param>
         /// <returns></returns>
-        public List<Point[]> FilterPolygonsByArea(List<Point[]> polygons, double minArea)
+        public List<Point[]> FilterPolygonsByArea(List<Point[]> polygons, List<Point[]> holesForFill,double minArea)
         {
             List<Point[]> result = new List<Point[]>();
 
@@ -105,6 +121,10 @@ namespace Geometry
                 if (area >= minArea)
                 {
                     result.Add(polygon);
+                }
+                else
+                {
+                    holesForFill.Add(polygon);
                 }
             }
 

@@ -281,7 +281,7 @@ namespace gdsreader {
 	private: String^ GdsFile = String::Empty;
 		   List<List<GPoint^>^>^ polygon_list = gcnew List<List<GPoint^>^>();
 
-		   List<GdsPolygon^>^ GdsPolygons = gcnew List<GdsPolygon^>();
+		   //List<GdsPolygon^>^ GdsPolygons = gcnew List<GdsPolygon^>();
 
 		   int DisplayLayer = 0;
 		   int TOP_POSITION = 50;

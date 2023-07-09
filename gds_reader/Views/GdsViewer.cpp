@@ -5,6 +5,7 @@
 
 using namespace gdstk;
 using namespace gdsreader;
+using namespace Geometry;
 
 System::Void GdsViewer::Tb_FilePath_DragEnter(System::Object^ sender, System::Windows::Forms::DragEventArgs^ e)
 {
@@ -44,7 +45,8 @@ System::Void GdsViewer::Btn_Start_Click(System::Object^ sender, System::EventArg
 			List<array<Point>^>^ gds_polygons = gcnew List<array<Point>^>();
 			// get all cell in gds file
 			gdstk::Array<Cell*> cells = lib.cell_array;
-			
+			int scale = 1000;
+
 			for (int64_t i = 0; i < cells.count; i++)
 			{
 				// get cell's polygons
@@ -56,7 +58,7 @@ System::Void GdsViewer::Btn_Start_Click(System::Object^ sender, System::EventArg
 					array<Point>^ points = gcnew array<Point>(poly->point_array.count);
 					for (int p = 0; p < poly->point_array.count; p++)
 					{
-						points[p] = Point(poly->point_array[p].x, poly->point_array[p].y);
+						points[p] = Point(poly->point_array[p].x * scale, poly->point_array[p].y * scale);
 					}
 					gds_polygons->Add(points);
 				}
@@ -64,27 +66,34 @@ System::Void GdsViewer::Btn_Start_Click(System::Object^ sender, System::EventArg
 
 			// create closed polygon from closed polygon path
 			gds_polygons = Geometry::Clipping::CombinePolygons(gds_polygons);
-
 			List<array<Point>^>^ edges = gcnew List<array<Point>^>();
 			List<array<Point>^>^ holes = gcnew List<array<Point>^>();
-
 			Geometry::Clipping::DividePolygons(gds_polygons, holes, edges);
 			
-			// ‚­‚è”²‚«“ñ‚Â‚Ìƒ|ƒŠƒSƒ“¶¬
-			gds_polygons = Geometry::Clipping::CreateClosedPathWithHole(edges[0], holes[0]);
-
-
+			array<Point>^ p__ = Geometry::UPoint::CreatePolygonWithHoles(edges[0], holes);
+	
+			//// ‚­‚è”²‚«“ñ‚Â‚Ìƒ|ƒŠƒSƒ“¶¬
+			////gds_polygons = Geometry::Clipping::CreateClosedPathWithHole(edges[0], holes[0]);
 			// path Œ`¬
-			array<Point>^ p = Geometry::Clipping::MakeHolesInPolygon(edges[0], holes);
+			//array<Point>^ p = Geometry::Clipping::MakeHolesInPolygon(edges[0], holes);
+			//List<Geometry::GdsPolygon^>^ poly_set = Geometry::GdsPolygons::AnalyzePolygons(edges, holes);
 
-			List<Geometry::GdsPolygon^>^ poly_set = Geometry::GdsPolygons::AnalyzePolygons(edges, holes);
 
+
+			Bitmap^ bmp = gcnew Bitmap(PicBox->Width, PicBox->Height);
+			Graphics^ g = Graphics::FromImage(bmp);
+
+			g->FillPolygon(Brushes::Black, p__);
+
+			PicBox->Image = bmp;
 			return;
 		}
 	}
 	else
 	{
-		return;
+
+
+		//return;
 	}
 }
 

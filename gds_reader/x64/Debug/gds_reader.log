@@ -1,3 +1,18 @@
-﻿  AssemblyInfo.obj : MSIL モジュールが見つかりました。MSIL ではインクリメンタル リンクは無効化されています。フル リンクを行います
+﻿  競合を解決して警告を消去するために、app.config でアセンブリ "System.ValueTuple, Culture=neutral, PublicKeyToken=cc7b13ffcd2ddd51" をバージョン "0.0.0.0" [] からバージョン "4.0.2.0" [C:\Users\pikas\Documents\Work\Geometry\bin\x64\Debug\System.ValueTuple.dll] にマップし直してください。
+  競合を解決して警告を消去するために、app.config でアセンブリ "System.Buffers, Culture=neutral, PublicKeyToken=cc7b13ffcd2ddd51" をバージョン "4.0.2.0" [] からバージョン "4.0.3.0" [C:\Users\pikas\Documents\Work\Geometry\bin\x64\Debug\System.Buffers.dll] にマップし直してください。
+C:\Program Files\Microsoft Visual Studio\2022\Community\MSBuild\Current\Bin\amd64\Microsoft.Common.CurrentVersion.targets(2352,5): warning MSB3276: 同じ依存アセンブリの異なるバージョン間で競合が見つかりました。プロジェクト ファイルで "AutoGenerateBindingRedirects" プロパティを true に設定してください。詳細については、http://go.microsoft.com/fwlink/?LinkId=294190 を参照してください。
+  GdsViewer.cpp
+C:\Users\pikas\Documents\Source\gds_reader\include\gdstk\cell.h(1,1): warning C4819: ファイルは、現在のコード ページ (932) で表示できない文字を含んでいます。データの損失を防ぐために、ファイルを Unicode 形式で保存してください。
+C:\Users\pikas\Documents\Source\gds_reader\include\gdstk\utils.h(1,1): warning C4819: ファイルは、現在のコード ページ (932) で表示できない文字を含んでいます。データの損失を防ぐために、ファイルを Unicode 形式で保存してください。
+C:\Users\pikas\Documents\Source\gds_reader\include\gdstk\repetition.h(1,1): warning C4819: ファイルは、現在のコード ページ (932) で表示できない文字を含んでいます。データの損失を防ぐために、ファイルを Unicode 形式で保存してください。
+C:\Users\pikas\Documents\Source\gds_reader\include\gdstk\polygon.h(1,1): warning C4819: ファイルは、現在のコード ページ (932) で表示できない文字を含んでいます。データの損失を防ぐために、ファイルを Unicode 形式で保存してください。
+C:\Users\pikas\Documents\Source\gds_reader\include\gdstk\gdswriter.h(67,18): warning C4996: 'fopen': This function or variable may be unsafe. Consider using fopen_s instead. To disable deprecation, use _CRT_SECURE_NO_WARNINGS. See online help for details.
+C:\Users\pikas\Documents\Source\gds_reader\include\gdstk\sort.h(1,1): warning C4819: ファイルは、現在のコード ページ (932) で表示できない文字を含んでいます。データの損失を防ぐために、ファイルを Unicode 形式で保存してください。
+C:\Users\pikas\Documents\Source\gds_reader\Views\GdsViewer.cpp(50,26): warning C4018: '<': signed と unsigned の数値を比較しようとしました。
+C:\Users\pikas\Documents\Source\gds_reader\Views\GdsViewer.cpp(54,27): warning C4018: '<': signed と unsigned の数値を比較しようとしました。
+C:\Users\pikas\Documents\Source\gds_reader\Views\GdsViewer.cpp(58,65): warning C4244: '引数': 'uint64_t' から 'int' への変換です。データが失われる可能性があります。
+C:\Users\pikas\Documents\Source\gds_reader\Views\GdsViewer.cpp(61,80): warning C4244: '引数': 'double' から 'int' への変換です。データが失われる可能性があります。
+C:\Users\pikas\Documents\Source\gds_reader\Views\GdsViewer.cpp(61,48): warning C4244: '引数': 'double' から 'int' への変換です。データが失われる可能性があります。
+  AssemblyInfo.obj : MSIL モジュールが見つかりました。MSIL ではインクリメンタル リンクは無効化されています。フル リンクを行います
 gdstk.lib(library.obj) : warning LNK4075: /EDITANDCONTINUE は /INCREMENTAL:NO の指定によって無視されます。
   gds_reader.vcxproj -> C:\Users\pikas\Documents\Source\gds_reader\x64\Debug\gds_reader.exe

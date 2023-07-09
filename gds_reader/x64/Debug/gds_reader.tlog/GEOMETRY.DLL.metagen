@@ -7,6 +7,10 @@ Assembly System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f
 	hash=None, flags=None
 Assembly clipper, Version=0.0.*, Culture=ロケールに依存しない言語 (ロケールに依存しない国): 
 	hash=None, flags=None
+Assembly NetTopologySuite, Version=2.0.0.0, Culture=neutral, PublicKeyToken=f580a05016ebada1: 
+	hash=None, flags=None
+Assembly System.ValueTuple, Version=4.0.2.0, Culture=neutral, PublicKeyToken=cc7b13ffcd2ddd51: 
+	hash=None, flags=None
 Assembly System.Core, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089: 
 	hash=None, flags=None
 Class Geometry.Clipping: AutoLayout, AnsiClass, Class, Public, BeforeFieldInit
@@ -33,3 +37,19 @@ Class Geometry.GdsPolygons: AutoLayout, AnsiClass, Class, Public, BeforeFieldIni
     Void .ctor(): PrivateScope, Public, HideBySig, SpecialName, RTSpecialName
   Methods:
     AnalyzePolygons(List`1, List`1): PrivateScope, Public, Static, HideBySig
+Class Geometry.Topology: AutoLayout, AnsiClass, Class, Public, BeforeFieldInit
+    Void .ctor(): PrivateScope, Public, HideBySig, SpecialName, RTSpecialName
+  Methods:
+    CreateSingleStrokePath(Point[], List`1): PrivateScope, Public, Static, HideBySig
+Class Geometry.UPoint: AutoLayout, AnsiClass, Class, Public, BeforeFieldInit
+    Void .ctor(Double, Double): PrivateScope, Public, HideBySig, SpecialName, RTSpecialName
+  Properties:
+    Double X   'get set' : 
+    Double Y   'get set' : 
+  Methods:
+    get_X(): PrivateScope, Public, HideBySig, SpecialName
+    set_X(Double): PrivateScope, Public, HideBySig, SpecialName
+    get_Y(): PrivateScope, Public, HideBySig, SpecialName
+    set_Y(Double): PrivateScope, Public, HideBySig, SpecialName
+    CreatePolygonWithHole(Point[], Point[]): PrivateScope, Public, Static, HideBySig
+    CreatePolygonWithHoles(Point[], List`1): PrivateScope, Public, Static, HideBySig

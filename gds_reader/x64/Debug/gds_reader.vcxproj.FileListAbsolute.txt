@@ -11,3 +11,15 @@ C:\Users\pikas\Documents\Source\gds_reader\x64\Debug\Utils.pdb
 C:\Users\pikas\Documents\Source\gds_reader\x64\Debug\Utils.dll.config
 C:\Users\pikas\Documents\Source\gds_reader\x64\Debug\Geometry.dll
 C:\Users\pikas\Documents\Source\gds_reader\x64\Debug\Geometry.pdb
+C:\Users\pikas\Documents\Source\gds_reader\x64\Debug\NetTopologySuite.dll
+C:\Users\pikas\Documents\Source\gds_reader\x64\Debug\System.Memory.dll
+C:\Users\pikas\Documents\Source\gds_reader\x64\Debug\System.Numerics.Vectors.dll
+C:\Users\pikas\Documents\Source\gds_reader\x64\Debug\System.Runtime.CompilerServices.Unsafe.dll
+C:\Users\pikas\Documents\Source\gds_reader\x64\Debug\System.Buffers.dll
+C:\Users\pikas\Documents\Source\gds_reader\x64\Debug\Geometry.dll.config
+C:\Users\pikas\Documents\Source\gds_reader\x64\Debug\NetTopologySuite.xml
+C:\Users\pikas\Documents\Source\gds_reader\x64\Debug\System.Memory.xml
+C:\Users\pikas\Documents\Source\gds_reader\x64\Debug\System.Numerics.Vectors.xml
+C:\Users\pikas\Documents\Source\gds_reader\x64\Debug\System.Runtime.CompilerServices.Unsafe.xml
+C:\Users\pikas\Documents\Source\gds_reader\x64\Debug\System.Buffers.xml
+C:\Users\pikas\Documents\Source\gds_reader\x64\Debug\System.ValueTuple.dll
