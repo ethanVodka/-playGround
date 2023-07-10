@@ -15,13 +15,13 @@ namespace Geometry
         /// </summary>
         /// <param name="polygons"></param>
         /// <returns></returns>
-        public static List<Point[]> CombinePolygons(List<Point[]> polygons)
+        public static List<UPoint[]> CombinePolygons(List<UPoint[]> polygons, double scale = 1.0)
         {
             Clipper clipper = new Clipper();
 
             foreach (var polygon in polygons)
             {
-                var path = polygon.Select(p => new IntPoint(p.X, p.Y)).ToList();
+                var path = polygon.Select(p => new IntPoint(p.X * scale, p.Y * scale)).ToList();
                 // true means the path is closed
                 clipper.AddPath(path, PolyType.ptSubject, true);
             }
@@ -29,7 +29,7 @@ namespace Geometry
             List<List<IntPoint>> resultPolygons = new List<List<IntPoint>>();
             clipper.Execute(ClipType.ctUnion, resultPolygons, PolyFillType.pftNonZero, PolyFillType.pftNonZero);
 
-            List<Point[]> finalPolygons = resultPolygons.Select(p => p.Select(ip => new Point((int)ip.X, (int)ip.Y)).ToArray()).ToList();
+            List<UPoint[]> finalPolygons = resultPolygons.Select(p => p.Select(ip => new UPoint(ip.X / scale, ip.Y / scale)).ToArray()).ToList();
 
             return finalPolygons;
         }
@@ -40,10 +40,10 @@ namespace Geometry
         /// <param name="polygons"></param>
         /// <param name="polygonsWithHoles"></param>
         /// <param name="polygonsWithoutHoles"></param>
-        public static void DividePolygons(List<Point[]> polygons, out List<Point[]> polygonsWithHoles, out List<Point[]> polygonsWithoutHoles)
+        public static void DividePolygons(List<UPoint[]> polygons, out List<UPoint[]> polygonsWithHoles, out List<UPoint[]> polygonsWithoutHoles, double scale = 1.0)
         {
-            polygonsWithHoles = new List<Point[]>();
-            polygonsWithoutHoles = new List<Point[]>();
+            polygonsWithHoles = new List<UPoint[]>();
+            polygonsWithoutHoles = new List<UPoint[]>();
 
             foreach (var polygon in polygons)
             {
@@ -51,24 +51,24 @@ namespace Geometry
 
                 foreach (var point in polygon)
                 {
-                    intPolygon.Add(new IntPoint(point.X, point.Y));
+                    intPolygon.Add(new IntPoint(point.X * scale, point.Y * scale));
                 }
 
                 if (Clipper.Orientation(intPolygon))
                 {
-                    Point[] updatedPoints = new Point[polygon.Length + 1];
+                    UPoint[] updatedPoints = new UPoint[polygon.Length + 1];
 
                     // 既存の要素を新しい配列にコピーする
                     Array.Copy(polygon, updatedPoints, polygon.Length);
 
                     // 新しい配列の最後の位置に新たな要素を追加する
                     updatedPoints[updatedPoints.Length - 1] = polygon[0];
-                    
+
                     polygonsWithoutHoles.Add(updatedPoints);
                 }
                 else
                 {
-                    Point[] updatedPoints = new Point[polygon.Length + 1];
+                    UPoint[] updatedPoints = new UPoint[polygon.Length + 1];
 
                     // 既存の要素を新しい配列にコピーする
                     Array.Copy(polygon, updatedPoints, polygon.Length);
@@ -86,10 +86,10 @@ namespace Geometry
         /// </summary>
         /// <param name="polygon"></param>
         /// <returns></returns>
-        public static bool IsHole(Point[] polygon)
+        public static bool IsHole(UPoint[] polygon, double scale = 1.0)
         {
             List<IntPoint> points = new List<IntPoint>();
-            points = polygon.Select(p => new IntPoint(p.X, p.Y)).ToList();
+            points = polygon.Select(p => new IntPoint(p.X * scale, p.Y * scale)).ToList();
 
             if (Clipper.Orientation(points))
             {
@@ -109,22 +109,18 @@ namespace Geometry
         /// <param name="polygons"></param>
         /// <param name="minArea"></param>
         /// <returns></returns>
-        public List<Point[]> FilterPolygonsByArea(List<Point[]> polygons, List<Point[]> holesForFill,double minArea)
+        public static List<UPoint[]> FilterPolygonsByArea(List<UPoint[]> polygons, double minArea, double scale = 1.0)
         {
-            List<Point[]> result = new List<Point[]>();
+            List<UPoint[]> result = new List<UPoint[]>();
 
             foreach (var polygon in polygons)
             {
-                var path = polygon.Select(p => new IntPoint(p.X, p.Y)).ToList();
+                var path = polygon.Select(p => new IntPoint(p.X * scale, p.Y * scale)).ToList();
                 double area = Clipper.Area(path);
 
-                if (area >= minArea)
+                if (area >= minArea * scale * scale)
                 {
                     result.Add(polygon);
-                }
-                else
-                {
-                    holesForFill.Add(polygon);
                 }
             }
 
@@ -137,7 +133,7 @@ namespace Geometry
         /// <param name="outerPolygon"></param>
         /// <param name="hole"></param>
         /// <returns></returns>
-        public static List<Point[]> CreateClosedPathWithHole(Point[] outerPolygon, Point[] hole)
+        public static List<UPoint[]> CreateClosedPathWithHole(UPoint[] outerPolygon, UPoint[] hole)
         {
             Clipper clipper = new Clipper();
 
@@ -150,7 +146,7 @@ namespace Geometry
             List<List<IntPoint>> resultPaths = new List<List<IntPoint>>();
             clipper.Execute(ClipType.ctUnion, resultPaths, PolyFillType.pftEvenOdd, PolyFillType.pftEvenOdd);
 
-            List<Point[]> finalPaths = resultPaths.Select(p => p.Select(ip => new Point((int)ip.X, (int)ip.Y)).ToArray()).ToList();
+            List<UPoint[]> finalPaths = resultPaths.Select(p => p.Select(ip => new UPoint(ip.X, ip.Y)).ToArray()).ToList();
 
             return finalPaths;
         }

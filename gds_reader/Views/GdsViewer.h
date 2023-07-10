@@ -1,5 +1,4 @@
 #pragma once
-#include "../GdsPolygon.h"
 
 namespace gdsreader {
 
@@ -74,6 +73,7 @@ namespace gdsreader {
 			this->Btn_Start = (gcnew System::Windows::Forms::Button());
 			this->Tb_FilePath = (gcnew System::Windows::Forms::TextBox());
 			this->splitContainer2 = (gcnew System::Windows::Forms::SplitContainer());
+			this->Btn_Do = (gcnew System::Windows::Forms::Button());
 			this->Cob_SelectLayer = (gcnew System::Windows::Forms::ComboBox());
 			this->Btn_Out = (gcnew System::Windows::Forms::Button());
 			this->Btn_In = (gcnew System::Windows::Forms::Button());
@@ -82,7 +82,6 @@ namespace gdsreader {
 			this->Btn_Right = (gcnew System::Windows::Forms::Button());
 			this->Btn_Up = (gcnew System::Windows::Forms::Button());
 			this->PicBox = (gcnew System::Windows::Forms::PictureBox());
-			this->Btn_Do = (gcnew System::Windows::Forms::Button());
 			(cli::safe_cast<System::ComponentModel::ISupportInitialize^>(this->splitContainer1))->BeginInit();
 			this->splitContainer1->Panel1->SuspendLayout();
 			this->splitContainer1->Panel2->SuspendLayout();
@@ -168,6 +167,16 @@ namespace gdsreader {
 			this->splitContainer2->SplitterDistance = 150;
 			this->splitContainer2->TabIndex = 1;
 			// 
+			// Btn_Do
+			// 
+			this->Btn_Do->Location = System::Drawing::Point(6, 9);
+			this->Btn_Do->Name = L"Btn_Do";
+			this->Btn_Do->Size = System::Drawing::Size(137, 36);
+			this->Btn_Do->TabIndex = 7;
+			this->Btn_Do->Text = L"ŽÀs";
+			this->Btn_Do->UseVisualStyleBackColor = true;
+			this->Btn_Do->Click += gcnew System::EventHandler(this, &GdsViewer::Btn_Do_Click);
+			// 
 			// Cob_SelectLayer
 			// 
 			this->Cob_SelectLayer->FormattingEnabled = true;
@@ -247,15 +256,6 @@ namespace gdsreader {
 			this->PicBox->TabIndex = 0;
 			this->PicBox->TabStop = false;
 			// 
-			// Btn_Do
-			// 
-			this->Btn_Do->Location = System::Drawing::Point(6, 9);
-			this->Btn_Do->Name = L"Btn_Do";
-			this->Btn_Do->Size = System::Drawing::Size(137, 36);
-			this->Btn_Do->TabIndex = 7;
-			this->Btn_Do->Text = L"ŽÀs";
-			this->Btn_Do->UseVisualStyleBackColor = true;
-			// 
 			// GdsViewer
 			// 
 			this->AutoScaleDimensions = System::Drawing::SizeF(6, 12);
@@ -278,18 +278,20 @@ namespace gdsreader {
 
 		}
 #pragma endregion
-	private: String^ GdsFile = String::Empty;
-		   List<List<GPoint^>^>^ polygon_list = gcnew List<List<GPoint^>^>();
+	private:
+		String^ GdsFile = String::Empty;
+		List<Geometry::GdsPolygons^>^ poly_set = gcnew List<Geometry::GdsPolygons^>();
+		List<array<Geometry::UPoint^>^>^ Polygons = gcnew List<array<Geometry::UPoint^>^>();
 
-		   //List<GdsPolygon^>^ GdsPolygons = gcnew List<GdsPolygon^>();
-
-		   int DisplayLayer = 0;
-		   int TOP_POSITION = 50;
-		   int LEFT_POSITION = 50;
-		   double SCALE = 1.0;
+		int DisplayLayer = 0;
+		int TOP_POSITION = 50;
+		int LEFT_POSITION = 50;
+		double SCALE = 10.0;
 
 	private: System::Void Tb_FilePath_DragDrop(System::Object^ sender, System::Windows::Forms::DragEventArgs^ e);
 	private: System::Void Tb_FilePath_DragEnter(System::Object^ sender, System::Windows::Forms::DragEventArgs^ e);
 	private: System::Void Btn_Start_Click(System::Object^ sender, System::EventArgs^ e);
-	};
+	private: System::Void DrawPath(List<array<Geometry::UPoint^>^>^ polygons);
+	private: System::Void Btn_Do_Click(System::Object^ sender, System::EventArgs^ e);
+};
 }

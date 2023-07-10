@@ -11,25 +11,25 @@ namespace Geometry
 {
     public class GdsPolygon
     {
-        public Point[] Outer { get; set; }
-        public List<Point[]> Holes { get; set; } = new List<Point[]>();
+        public UPoint[] Outer { get; set; }
+        public List<UPoint[]> Holes { get; set; } = new List<UPoint[]>();
     }
 
     public class GdsPolygons
     {
-        public static List<GdsPolygon> AnalyzePolygons(List<Point[]> outerPolygons, List<Point[]> holePolygons)
+        public static List<GdsPolygon> AnalyzePolygons(List<UPoint[]> outerPolygons, List<UPoint[]> holePolygons, double scale = 1.0)
         {
-            var gdsPolygons = new List<GdsPolygon>();
+            List<GdsPolygon> gdsPolygons = new List<GdsPolygon>();
 
-            foreach (var outerPolygon in outerPolygons)
+            foreach (UPoint[] outerPolygon in outerPolygons)
             {
-                var gdsPolygon = new GdsPolygon { Outer = outerPolygon };
+                GdsPolygon gdsPolygon = new GdsPolygon { Outer = outerPolygon };
 
-                var outerIntPolygon = outerPolygon.Select(p => new IntPoint(p.X, p.Y)).ToList();
+                List<IntPoint> outerIntPolygon = outerPolygon.Select(p => new IntPoint(p.X * scale, p.Y * scale)).ToList();
 
-                foreach (var holePolygon in holePolygons)
+                foreach (UPoint[] holePolygon in holePolygons)
                 {
-                    var holeIntPolygon = holePolygon.Select(p => new IntPoint(p.X, p.Y)).ToList();
+                    List<IntPoint> holeIntPolygon = holePolygon.Select(p => new IntPoint(p.X * scale, p.Y * scale)).ToList();
 
                     // if the hole is in the outer polygon
                     if (Clipper.PointInPolygon(holeIntPolygon[0], outerIntPolygon) != 0)

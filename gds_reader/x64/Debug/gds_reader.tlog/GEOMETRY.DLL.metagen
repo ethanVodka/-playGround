@@ -3,9 +3,9 @@ Assembly Geometry, Version=1.0.*, Culture=ロケールに依存しない言語 (
 	hash=SHA1, flags=PublicKey
 Assembly mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089: 
 	hash=None, flags=None
-Assembly System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a: 
-	hash=None, flags=None
 Assembly clipper, Version=0.0.*, Culture=ロケールに依存しない言語 (ロケールに依存しない国): 
+	hash=None, flags=None
+Assembly System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a: 
 	hash=None, flags=None
 Assembly NetTopologySuite, Version=2.0.0.0, Culture=neutral, PublicKeyToken=f580a05016ebada1: 
 	hash=None, flags=None
@@ -16,27 +16,27 @@ Assembly System.Core, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561
 Class Geometry.Clipping: AutoLayout, AnsiClass, Class, Public, BeforeFieldInit
     Void .ctor(): PrivateScope, Public, HideBySig, SpecialName, RTSpecialName
   Methods:
-    CombinePolygons(List`1): PrivateScope, Public, Static, HideBySig
-    DividePolygons(List`1, List`1&(Out), List`1&(Out)): PrivateScope, Public, Static, HideBySig
-    IsHole(Point[]): PrivateScope, Public, Static, HideBySig
-    FilterPolygonsByArea(List`1, Double): PrivateScope, Public, HideBySig
-    CreateClosedPathWithHole(Point[], Point[]): PrivateScope, Public, Static, HideBySig
+    CombinePolygons(List`1, Double(Optional, HasDefault)): PrivateScope, Public, Static, HideBySig
+    DividePolygons(List`1, List`1&(Out), List`1&(Out), Double(Optional, HasDefault)): PrivateScope, Public, Static, HideBySig
+    IsHole(UPoint[], Double(Optional, HasDefault)): PrivateScope, Public, Static, HideBySig
+    FilterPolygonsByArea(List`1, Double, Double(Optional, HasDefault)): PrivateScope, Public, Static, HideBySig
+    CreateClosedPathWithHole(UPoint[], UPoint[]): PrivateScope, Public, Static, HideBySig
     CreateSingleStrokePathWithHole(Point[], Point[]): PrivateScope, Public, Static, HideBySig
     MakeHolesInPolygon(Point[], List`1): PrivateScope, Public, Static, HideBySig
 Class Geometry.GdsPolygon: AutoLayout, AnsiClass, Class, Public, BeforeFieldInit
     Void .ctor(): PrivateScope, Public, HideBySig, SpecialName, RTSpecialName
   Properties:
-    System.Drawing.Point[] Outer 'get set' : 
-    System.Collections.Generic.List`1[System.Drawing.Point[]] Holes 'get set' : 
+    Geometry.UPoint[] Outer 'get set' : 
+    System.Collections.Generic.List`1[Geometry.UPoint[]] Holes 'get set' : 
   Methods:
     get_Outer(): PrivateScope, Public, HideBySig, SpecialName
-    set_Outer(Point[]): PrivateScope, Public, HideBySig, SpecialName
+    set_Outer(UPoint[]): PrivateScope, Public, HideBySig, SpecialName
     get_Holes(): PrivateScope, Public, HideBySig, SpecialName
     set_Holes(List`1): PrivateScope, Public, HideBySig, SpecialName
 Class Geometry.GdsPolygons: AutoLayout, AnsiClass, Class, Public, BeforeFieldInit
     Void .ctor(): PrivateScope, Public, HideBySig, SpecialName, RTSpecialName
   Methods:
-    AnalyzePolygons(List`1, List`1): PrivateScope, Public, Static, HideBySig
+    AnalyzePolygons(List`1, List`1, Double(Optional, HasDefault)): PrivateScope, Public, Static, HideBySig
 Class Geometry.Topology: AutoLayout, AnsiClass, Class, Public, BeforeFieldInit
     Void .ctor(): PrivateScope, Public, HideBySig, SpecialName, RTSpecialName
   Methods:
@@ -51,5 +51,5 @@ Class Geometry.UPoint: AutoLayout, AnsiClass, Class, Public, BeforeFieldInit
     set_X(Double): PrivateScope, Public, HideBySig, SpecialName
     get_Y(): PrivateScope, Public, HideBySig, SpecialName
     set_Y(Double): PrivateScope, Public, HideBySig, SpecialName
-    CreatePolygonWithHole(Point[], Point[]): PrivateScope, Public, Static, HideBySig
-    CreatePolygonWithHoles(Point[], List`1): PrivateScope, Public, Static, HideBySig
+    CreatePathWithMultipleHoles(UPoint[], List`1): PrivateScope, Public, Static, HideBySig
+    AddHoleToPolygon(UPoint[], UPoint[]): PrivateScope, Public, Static, HideBySig
