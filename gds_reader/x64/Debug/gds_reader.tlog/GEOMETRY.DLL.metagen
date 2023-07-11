@@ -51,5 +51,6 @@ Class Geometry.UPoint: AutoLayout, AnsiClass, Class, Public, BeforeFieldInit
     set_X(Double): PrivateScope, Public, HideBySig, SpecialName
     get_Y(): PrivateScope, Public, HideBySig, SpecialName
     set_Y(Double): PrivateScope, Public, HideBySig, SpecialName
+    CleanGeometry(UPoint[], List`1, Double): PrivateScope, Public, Static, HideBySig
     CreatePathWithMultipleHoles(UPoint[], List`1): PrivateScope, Public, Static, HideBySig
     AddHoleToPolygon(UPoint[], UPoint[]): PrivateScope, Public, Static, HideBySig

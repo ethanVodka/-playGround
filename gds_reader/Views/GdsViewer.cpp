@@ -5,7 +5,7 @@
 
 using namespace gdstk;
 using namespace gdsreader;
-using namespace Geometry;
+using namespace GeosLibrary;
 
 System::Void GdsViewer::Tb_FilePath_DragEnter(System::Object^ sender, System::Windows::Forms::DragEventArgs^ e)
 {
@@ -22,6 +22,7 @@ System::Void GdsViewer::Tb_FilePath_DragDrop(System::Object^ sender, System::Win
 		array<String^>^ files = (array<String^>^)e->Data->GetData(DataFormats::FileDrop);
 		if (files->Length > 0)
 			this->Tb_FilePath->Text = files[0];
+		GdsFile = this->Tb_FilePath->Text;
 	}
 }
 
@@ -97,8 +98,8 @@ System::Void gdsreader::GdsViewer::DrawPath(List<array<UPoint^>^>^ polygons)
 		}
 		Pen^ p = gcnew Pen(Color::Red, 0.1);
 		//Brush^ b = gcnew Brush();
-		g->DrawPolygon(p, scaledPoints);
-		//g->FillPolygon(Brushes::Black, scaledPoints);
+		//g->DrawPolygon(p, scaledPoints);
+		g->FillPolygon(Brushes::Black, scaledPoints);
 	}
 
 	PicBox->Image = bmp;
@@ -109,57 +110,55 @@ System::Void gdsreader::GdsViewer::Btn_Do_Click(System::Object^ sender, System::
 	try
 	{
 		// create closed polygon from closed polygon path
-		//Polygons = Geometry::Clipping::CombinePolygons(Polygons, 1000.0);
+		GdsPolygons = GeosClipper::UClipper::CombinePolygons(Polygons, 1000.0);
 
-		//List<array<UPoint^>^>^ edges = gcnew List<array<UPoint^>^>();
-		//List<array<UPoint^>^>^ holes = gcnew List<array<UPoint^>^>();
-
-		//Geometry::Clipping::DividePolygons(Polygons, holes, edges, 1000.0);
-
-		List<array<UPoint^>^>^ paths = gcnew List<array<UPoint^>^>();
-
-
-		array<UPoint^>^ outer = gcnew array<UPoint^>(5)
-		{
-			gcnew UPoint(0, 0),
-				gcnew UPoint(50, 0),
-				gcnew UPoint(50, 50),
-				gcnew UPoint(0, 50),
-				gcnew UPoint(0, 0)  // 起点に戻ることでポリゴンを閉じる
-		};
-
-		// Create list of holes
+		List<array<UPoint^>^>^ edges = gcnew List<array<UPoint^>^>();
 		List<array<UPoint^>^>^ holes = gcnew List<array<UPoint^>^>();
 
-		// Define hole 1
-		array<UPoint^>^ hole1 = gcnew array<UPoint^>(5)
+		GeosClipper::UClipper::DividePolygons(GdsPolygons, holes, edges, 1000.0);
+
+		poly_set = GeosLibrary::Models::PolygonSet::AnalyzePolygons(edges, holes, 1000.0);
+
+		Path->Add(USmallHoleRemover::RemoveHoles(poly_set[0]->Outer, poly_set[0]->Holes, 1.0));
+
+		DrawPath(Path);
+
+
+		// export gds file fill mesh
+		
+		IntPtr ptr = Marshal::StringToHGlobalAnsi(Tb_FilePath->Text);
+		const char* file_path = static_cast<char*>(ptr.ToPointer());
+		ptr = Marshal::StringToHGlobalAnsi(GdsFile->Replace(".gds", "") + "_out.gds");
+		file_path = static_cast<char*>(ptr.ToPointer());
+
+		Library lib = {};
+		lib.init("library", 0, 1e-2);
+
+		Cell* cell = (Cell*)allocate_clear(sizeof(Cell));
+		cell->name = copy_string("my_cell", NULL);
+		lib.cell_array.append(cell);
+
+		for (int64_t i = 0; i < Path->Count; i++)
 		{
-			gcnew UPoint(10, 10),
-				gcnew UPoint(20, 10),
-				gcnew UPoint(20, 20),
-				gcnew UPoint(10, 20),
-				gcnew UPoint(10, 10)  // ホール1を閉じる
-		};
+			gdstk::Polygon* poly = (Polygon*)allocate_clear(sizeof(Polygon));
+			gdstk::Array<Vec2> p_array = {};
 
-		// Define hole 2
-		array<UPoint^>^ hole2 = gcnew array<UPoint^>(5)
-		{
-			gcnew UPoint(30, 30),
-				gcnew UPoint(40, 30),
-				gcnew UPoint(40, 40),
-				gcnew UPoint(30, 40),
-				gcnew UPoint(30, 30)  // ホール2を閉じる
-		};
+			array<UPoint^>^ points = Path[i];
+			for (int64_t p = 0; p < points->Length; p++)
+			{
+				poly->point_array.append(Vec2{ points[p]->X, points[p]->Y });
+			}
+			cell->polygon_array.append(poly);
+		}
 
-		// Add holes to the list
-		holes->Add(hole1);
-		holes->Add(hole2);
+		// release resource
+		Marshal::FreeHGlobal(ptr);
+		lib.write_gds(file_path, 0, NULL);
 
+		cell->clear();
+		lib.clear();
+		
 
-
-		paths->Add(Geometry::UPoint::CreatePathWithMultipleHoles(outer, holes));
-
-		DrawPath(paths);
 
 		return;
 	}

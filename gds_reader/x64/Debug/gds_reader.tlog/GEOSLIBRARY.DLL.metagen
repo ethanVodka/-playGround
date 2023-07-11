@@ -1,0 +1,51 @@
+ImageRuntimeVersion: v4.0.30319
+Assembly GeosLibrary, Version=1.0.*, Culture=ロケールに依存しない言語 (ロケールに依存しない国): 
+	hash=SHA1, flags=PublicKey
+Assembly mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089: 
+	hash=None, flags=None
+Assembly clipper, Version=0.0.*, Culture=ロケールに依存しない言語 (ロケールに依存しない国): 
+	hash=None, flags=None
+Assembly NetTopologySuite, Version=2.0.0.0, Culture=neutral, PublicKeyToken=f580a05016ebada1: 
+	hash=None, flags=None
+Assembly System.Core, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089: 
+	hash=None, flags=None
+Class GeosLibrary.Utils.UArrayManager: AutoLayout, AnsiClass, Class, Public, BeforeFieldInit
+    Void .ctor(): PrivateScope, Public, HideBySig, SpecialName, RTSpecialName
+  Methods:
+    AddFirstElementToLast(T[]): PrivateScope, Public, Static, HideBySig
+    CreateReversedArray(T[]): PrivateScope, Public, Static, HideBySig
+Class GeosLibrary.GeosClipper.UClipper: AutoLayout, AnsiClass, Class, Public, BeforeFieldInit
+    Void .ctor(): PrivateScope, Public, HideBySig, SpecialName, RTSpecialName
+  Methods:
+    CombinePolygons(List`1, Double(Optional, HasDefault)): PrivateScope, Public, Static, HideBySig
+    DividePolygons(List`1, List`1&(Out), List`1&(Out), Double(Optional, HasDefault)): PrivateScope, Public, Static, HideBySig
+Class GeosLibrary.Models.PolygonSet: AutoLayout, AnsiClass, Class, Public, BeforeFieldInit
+    Void .ctor(): PrivateScope, Public, HideBySig, SpecialName, RTSpecialName
+  Properties:
+    GeosLibrary.Models.UPoint[] Outer 'get set' : 
+    System.Collections.Generic.List`1[GeosLibrary.Models.UPoint[]] Holes 'get set' : 
+  Methods:
+    get_Outer(): PrivateScope, Public, HideBySig, SpecialName
+    set_Outer(UPoint[]): PrivateScope, Public, HideBySig, SpecialName
+    get_Holes(): PrivateScope, Public, HideBySig, SpecialName
+    set_Holes(List`1): PrivateScope, Public, HideBySig, SpecialName
+    AnalyzePolygons(List`1, List`1, Double(Optional, HasDefault)): PrivateScope, Public, Static, HideBySig
+Class GeosLibrary.Models.UPoint: AutoLayout, AnsiClass, Class, Public, BeforeFieldInit
+    Void .ctor(): PrivateScope, Public, HideBySig, SpecialName, RTSpecialName
+    Void .ctor(Double, Double): PrivateScope, Public, HideBySig, SpecialName, RTSpecialName
+  Properties:
+    Double X   'get set' : 
+    Double Y   'get set' : 
+  Methods:
+    get_X(): PrivateScope, Public, HideBySig, SpecialName
+    set_X(Double): PrivateScope, Public, HideBySig, SpecialName
+    get_Y(): PrivateScope, Public, HideBySig, SpecialName
+    set_Y(Double): PrivateScope, Public, HideBySig, SpecialName
+    Equals(Object): PrivateScope, Public, Virtual, HideBySig
+    GetHashCode(): PrivateScope, Public, Virtual, HideBySig
+    ToString(): PrivateScope, Public, Virtual, HideBySig
+Class GeosLibrary.Models.USmallHoleRemover: AutoLayout, AnsiClass, Class, Public, BeforeFieldInit
+    Void .ctor(): PrivateScope, Public, HideBySig, SpecialName, RTSpecialName
+  Methods:
+    RemoveHoles(UPoint[], List`1, Double): PrivateScope, Public, Static, HideBySig
+    ExtractPointsFromCleanedGeometryIncludingHoles(Geometry): PrivateScope, Public, Static, HideBySig

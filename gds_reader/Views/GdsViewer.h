@@ -11,6 +11,7 @@ namespace gdsreader {
 	using namespace System::Drawing;
 	using namespace System::Runtime::InteropServices;
 	using namespace System::Configuration;
+	using namespace GeosLibrary::Models;
 
 
 	/// <summary>
@@ -280,18 +281,20 @@ namespace gdsreader {
 #pragma endregion
 	private:
 		String^ GdsFile = String::Empty;
-		List<Geometry::GdsPolygons^>^ poly_set = gcnew List<Geometry::GdsPolygons^>();
-		List<array<Geometry::UPoint^>^>^ Polygons = gcnew List<array<Geometry::UPoint^>^>();
+		List<PolygonSet^>^ poly_set = gcnew List<PolygonSet^>();
+		List<array<UPoint^>^>^ Polygons = gcnew List<array<UPoint^>^>();
+		List<array<UPoint^>^>^ GdsPolygons = gcnew List<array<UPoint^>^>();
+		List<array<UPoint^>^>^ Path = gcnew List<array<UPoint^>^>();
 
 		int DisplayLayer = 0;
-		int TOP_POSITION = 50;
-		int LEFT_POSITION = 50;
-		double SCALE = 10.0;
+		int TOP_POSITION = 250;
+		int LEFT_POSITION = 150;
+		double SCALE = 80.0;
 
 	private: System::Void Tb_FilePath_DragDrop(System::Object^ sender, System::Windows::Forms::DragEventArgs^ e);
 	private: System::Void Tb_FilePath_DragEnter(System::Object^ sender, System::Windows::Forms::DragEventArgs^ e);
 	private: System::Void Btn_Start_Click(System::Object^ sender, System::EventArgs^ e);
-	private: System::Void DrawPath(List<array<Geometry::UPoint^>^>^ polygons);
+	private: System::Void DrawPath(List<array<UPoint^>^>^ polygons);
 	private: System::Void Btn_Do_Click(System::Object^ sender, System::EventArgs^ e);
 };
 }

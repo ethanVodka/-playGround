@@ -87,7 +87,8 @@
     </ClCompile>
     <Link>
       <AdditionalDependencies>C:\Users\pikas\Documents\Source\gds_reader\lib\Debug\gdstk.lib;%(AdditionalDependencies)</AdditionalDependencies>
-      <SubSystem>Console</SubSystem>
+      <SubSystem>Windows</SubSystem>
+      <EntryPointSymbol>main</EntryPointSymbol>
     </Link>
   </ItemDefinitionGroup>
   <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">
@@ -151,8 +152,8 @@
     <Image Include="app.ico" />
   </ItemGroup>
   <ItemGroup>
-    <Reference Include="Geometry">
-      <HintPath>..\..\Work\Geometry\bin\x64\Debug\Geometry.dll</HintPath>
+    <Reference Include="GeosLibrary">
+      <HintPath>..\..\Work\GeosLibrary\bin\x64\Debug\GeosLibrary.dll</HintPath>
     </Reference>
     <Reference Include="System" />
     <Reference Include="System.Configuration" />
@@ -160,9 +161,6 @@
     <Reference Include="System.Drawing" />
     <Reference Include="System.Windows.Forms" />
     <Reference Include="System.Xml" />
-    <Reference Include="Utils">
-      <HintPath>..\Utils\bin\x64\Debug\Utils.dll</HintPath>
-    </Reference>
   </ItemGroup>
   <ItemGroup>
     <EmbeddedResource Include="Views\GdsViewer.resx">
