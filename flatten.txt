@@ -1,0 +1,8 @@
+				gdstk::Array<Cell*> cells = lib.cell_array;
+				gdstk::Array<gdstk::Reference*> removed_references = {};
+				for (int64_t i = 0; i < cells.count; i++)
+				{
+					Cell* c = cells[i];
+					c->flatten(true, removed_references);
+					int a = c->polygon_array.count;
+				}
